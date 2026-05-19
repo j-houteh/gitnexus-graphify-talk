@@ -16,29 +16,30 @@ interface Test {
 const TESTS: Test[] = [
   {
     id: "01",
-    label: "encryption handling",
+    label: "exception assignment flow",
     metrics: [
-      { label: "tool calls", before: "14", after: "2" },
-      { label: "file reads", before: "11", after: "0" },
+      { label: "tool calls", before: "18", after: "7" },
+      { label: "file reads", before: "11", after: "4" },
     ],
-    bonus: "+13 dependencies found (43 vs 30)",
+    bonus: "found the CQRS event handler grep would miss",
   },
   {
     id: "02",
-    label: "blast radius",
+    label: "invoice → payable matching",
     metrics: [
-      { label: "tool calls", before: "~15", after: "2" },
-      { label: "exec flows", before: "0", after: "9" },
+      { label: "tool calls", before: "22", after: "5" },
+      { label: "file reads", before: "14", after: "3" },
     ],
-    bonus: "ranked by risk",
+    bonus: "12 services · 4 events traced end-to-end",
   },
   {
     id: "03",
-    label: "end-to-end editor flow",
+    label: "schema impact: InvoiceLineItem",
     metrics: [
-      { label: "tool calls", before: "29", after: "3" },
-      { label: "file reads", before: "15", after: "0" },
+      { label: "tool calls", before: "15", after: "3" },
+      { label: "file reads", before: "10", after: "0" },
     ],
+    bonus: "11 dependencies surfaced, ranked by risk",
   },
 ];
 
@@ -49,9 +50,9 @@ interface Aggregate {
   pct: string;
 }
 const AGGREGATES: Aggregate[] = [
-  { label: "tool calls",      before: "58", after: "7", pct: "88%" },
-  { label: "grep operations", before: "18", after: "0", pct: "100%" },
-  { label: "file reads",      before: "35", after: "0", pct: "100%" },
+  { label: "tool calls",      before: "55", after: "15", pct: "73%" },
+  { label: "grep operations", before: "18", after: "0",  pct: "100%" },
+  { label: "file reads",      before: "35", after: "7",  pct: "80%" },
 ];
 
 function MetricCell({ m }: { m: Metric }) {
@@ -106,7 +107,7 @@ export default function Receipts({ step }: ChapterStepProps) {
     return (
       <div className="rc-scene scene-pad">
         <div className="rc-step0">
-          <div className="rc-step0-label">The receipts</div>
+          <div className="rc-step0-label">The receipts · our monorepo</div>
           <h2 className="rc-step0-h">
             Three queries.
             <br />
@@ -167,26 +168,26 @@ export default function Receipts({ step }: ChapterStepProps) {
     <div className="rc-scene scene-pad">
       <div className="rc-step7">
         <div className="rc-mini-row">
-          <span className="rc-mini">tool calls: 58 → 7</span>
+          <span className="rc-mini">tool calls: 55 → 15</span>
           <span className="rc-mini-sep">·</span>
           <span className="rc-mini">greps: 18 → 0</span>
           <span className="rc-mini-sep">·</span>
-          <span className="rc-mini">reads: 35 → 0</span>
+          <span className="rc-mini">reads: 35 → 7</span>
         </div>
         <div className="rc-token-row">
           <div className="rc-token-side rc-token-before">
-            <div className="rc-token-cap">tokens · per query</div>
-            <div className="hero-num rc-token-num">13,750</div>
+            <div className="rc-token-cap">tokens · per session</div>
+            <div className="hero-num rc-token-num">60,000</div>
             <div className="rc-token-tag">grep + read path</div>
           </div>
           <div className="rc-token-arrow">→</div>
           <div className="rc-token-side rc-token-after">
-            <div className="rc-token-cap">tokens · per query</div>
-            <div className="hero-num rc-token-num rc-token-num-accent">3,500</div>
+            <div className="rc-token-cap">tokens · per session</div>
+            <div className="hero-num rc-token-num rc-token-num-accent">18,000</div>
             <div className="rc-token-tag">MCP graph path</div>
           </div>
         </div>
-        <div className="rc-token-stamp">74% saved · per query</div>
+        <div className="rc-token-stamp">70% saved · per session</div>
       </div>
     </div>
   );

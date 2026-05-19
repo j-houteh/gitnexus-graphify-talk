@@ -1,12 +1,12 @@
 import type { Narration } from "../../registry/types";
 
 export const narrations: Narration[] = [
-  "Three real queries. Same codebase. Normal Claude versus Claude with the graphs.",
-  "Test 1 — encryption handling. Fourteen tool calls became two. Eleven file reads became zero. And it found more dependencies — forty-three versus thirty.",
-  "Test 2 — blast radius. About fifteen calls became two. Zero execution flows traced became nine, ranked by risk.",
-  "Test 3 — end-to-end document editor flow. Twenty-nine tool calls became three. Fifteen file reads became zero.",
-  "Aggregate. Fifty-eight tool calls collapsed to seven. Eighty-eight percent fewer.",
+  "Three real queries. Same monorepo. Without the graphs versus with.",
+  "Test 1 — exception assignment flow. Eighteen tool calls became seven. Eleven file reads became four. And it found the CQRS event handler grep would have missed.",
+  "Test 2 — invoice to payable matching. Twenty-two calls became five. Fourteen reads became three. Twelve services and four events, traced end-to-end.",
+  "Test 3 — schema impact on InvoiceLineItem. Fifteen calls became three. Ten reads became zero. Eleven dependencies surfaced, ranked by risk.",
+  "Aggregate. Fifty-five tool calls collapsed to fifteen. Seventy-three percent fewer.",
   "Eighteen grep operations — gone. One hundred percent.",
-  "Thirty-five file reads — gone. One hundred percent.",
-  "And the headline number — retrieval tokens per query. Thirteen thousand seven hundred and fifty, down to three thousand five hundred. Seventy-four percent saved.",
+  "Thirty-five file reads down to seven. Eighty percent fewer.",
+  "And the headline — sixty thousand tokens per session, down to eighteen thousand. Seventy percent saved.",
 ];

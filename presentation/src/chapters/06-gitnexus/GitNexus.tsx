@@ -137,12 +137,12 @@ export default function GitNexus({ step }: ChapterStepProps) {
           <div className="gn-counters">
             <div className="gn-counter gn-counter-in">
               <div className="gn-counter-row">
-                <span className="hero-num gn-counter-num">5</span>
-                <span className="gn-counter-unit">repos</span>
+                <span className="hero-num gn-counter-num">1</span>
+                <span className="gn-counter-unit">repo</span>
               </div>
               <div className="gn-counter-row">
-                <span className="hero-num gn-counter-num">29</span>
-                <span className="gn-counter-unit">seconds</span>
+                <span className="hero-num gn-counter-num">1,626</span>
+                <span className="gn-counter-unit">files</span>
               </div>
             </div>
           </div>
@@ -161,15 +161,15 @@ export default function GitNexus({ step }: ChapterStepProps) {
           </div>
           <div className="gn-counters">
             <div className="gn-counter gn-counter-prev">
-              <div className="gn-counter-mini">5 repos · 29 seconds</div>
+              <div className="gn-counter-mini">1 repo · 1,626 files</div>
             </div>
             <div className="gn-counter gn-counter-in">
               <div className="gn-counter-row">
-                <span className="hero-num gn-counter-num">11,237</span>
+                <span className="hero-num gn-counter-num">22,958</span>
                 <span className="gn-counter-unit">nodes</span>
               </div>
               <div className="gn-counter-row">
-                <span className="hero-num gn-counter-num">23,356</span>
+                <span className="hero-num gn-counter-num">47,780</span>
                 <span className="gn-counter-unit">edges</span>
               </div>
             </div>
@@ -189,10 +189,10 @@ export default function GitNexus({ step }: ChapterStepProps) {
           </div>
           <div className="gn-counters">
             <div className="gn-counter gn-counter-prev">
-              <div className="gn-counter-mini">5 repos · 29s · 11,237 nodes · 23,356 edges</div>
+              <div className="gn-counter-mini">1 repo · 1,626 files · 22,958 nodes · 47,780 edges</div>
             </div>
             <div className="gn-counter gn-counter-in gn-counter-hero">
-              <span className="hero-num gn-counter-big">659</span>
+              <span className="hero-num gn-counter-big">254</span>
               <span className="gn-counter-big-unit">execution flows · traced</span>
             </div>
           </div>

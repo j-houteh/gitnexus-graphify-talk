@@ -33,11 +33,11 @@ One question to your agent.
 
 ---
 
-Twenty-nine tool calls. Fifteen file reads.
+Twenty-five tool calls. Twelve file reads.
 
 ---
 
-Fifty-six thousand tokens — for one answer.
+Sixty thousand tokens — for one session.
 
 ---
 
@@ -87,15 +87,15 @@ Symbols, calls, imports, execution flows — all indexed.
 
 ---
 
-Five repos. Twenty-nine seconds.
+One repo. Sixteen hundred files.
 
 ---
 
-Eleven thousand nodes. Twenty-three thousand edges.
+Twenty-three thousand nodes. Forty-seven thousand edges.
 
 ---
 
-Six hundred and fifty-nine execution flows — traced and ready.
+Two hundred and fifty-four execution flows — traced and ready.
 
 ---
 
@@ -179,23 +179,23 @@ MCP over CLI saves about two hundred tokens per call. Your agent asks. The graph
 
 ## Chapter 10 — The receipts
 
-Three real queries. Same codebase. Normal Claude versus Claude with the graphs.
+Three real queries. Same monorepo. Without the graphs versus with.
 
 ---
 
-Test 1 — encryption handling. Fourteen tool calls became two. Eleven file reads became zero. And it found *more* dependencies. Forty-three versus thirty.
+Test 1 — exception assignment flow. Eighteen tool calls became seven. Eleven file reads became four. And it found the CQRS event handler grep would have missed.
 
 ---
 
-Test 2 — blast radius on DocumentsService. About fifteen calls became two. Zero execution flows traced — became nine. With risk ranking.
+Test 2 — invoice to payable matching. Twenty-two calls became five. Fourteen reads became three. Twelve services and four events, traced end-to-end.
 
 ---
 
-Test 3 — end-to-end document editor flow. Twenty-nine tool calls became three. Fifteen file reads became zero.
+Test 3 — schema impact on InvoiceLineItem. Fifteen calls became three. Ten reads became zero. Eleven dependencies surfaced, ranked by risk.
 
 ---
 
-Aggregate: fifty-eight tool calls collapsed to seven. Eighty-eight percent fewer.
+Aggregate. Fifty-five tool calls collapsed to fifteen. Seventy-three percent fewer.
 
 ---
 
@@ -203,11 +203,11 @@ Eighteen grep operations — gone. One hundred percent.
 
 ---
 
-Thirty-five file reads — gone. One hundred percent.
+Thirty-five file reads down to seven. Eighty percent fewer.
 
 ---
 
-And the headline number — retrieval tokens for one query. Thirteen thousand seven hundred and fifty — down to three thousand five hundred. Seventy-four percent saved.
+And the headline — sixty thousand tokens per session, down to eighteen thousand. Seventy percent saved.
 
 ---
 

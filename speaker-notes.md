@@ -18,9 +18,10 @@ Complement to [script.md](script.md) (on-screen text) and
 | **Anticipated Q&A** | Likely audience questions + answer cues |
 | **Handoff line** | Exact spoken bridge to the next chapter |
 
-> Numbers in this document are load-bearing. Don't paraphrase the
-> benchmark figures (56,439 / 88% / 13,750 → 3,500). Everything else
-> can be in your own words.
+> Numbers in this document come from our own monorepo testing. Treat them
+> as load-bearing — round when speaking aloud (60K, 22K, 47K) but the
+> specific aggregates (73% / 100% / 80% / 70%) are what we have. Don't
+> claim bigger than that.
 
 ---
 
@@ -58,8 +59,7 @@ Natural handoffs:
 
 ### Notes
 
-- This is *evergreen* — no date, no speaker names. Same slide works for re-runs.
-- One-time entrance animation, then static. Won't distract during pre-talk chatter.
+- Evergreen — no date, no speaker names. Same slide works for re-runs.
 - When ready to begin, the lead speaker clicks once — advances to ch 2 (Intro), where Speaker A takes over.
 
 ### Handoff
@@ -77,7 +77,7 @@ When ready: click → Speaker A opens ch 2 with **"Using Claude Code for serious
 ### Step notes
 
 **Step 0 — "Using Claude Code for serious work?"**
-- Acknowledge the room. Most engineers in the room will be using Claude or a similar agent daily.
+- Acknowledge the room. Most engineers here will be using Claude or a similar agent daily.
 - "Serious work" = production code, not weekend toys. Sets stakes without naming them.
 - Treat it as an actual question — small pause for nods.
 
@@ -93,12 +93,12 @@ When ready: click → Speaker A opens ch 2 with **"Using Claude Code for serious
 ### Live examples to share
 
 - "Quick show of hands — who's used an AI coding agent this week? Keep your hand up if it ever made you wait while it grep'd around for a function." *(if interactive)*
-- Pull a personal anecdote: "I asked Claude to find one specific function in our codebase last Tuesday. Cost me 56K tokens. That's a small book worth of context — to find one function."
+- Pull from your own work: "I asked Claude to trace a single execution flow in our monorepo last week. Sixty thousand tokens. For one question."
 
 ### Anticipated Q&A
 
 - *"Is this Claude-specific?"* — Mostly applies to any agentic IDE doing grep+read loops (Cursor, Cline, Aider, etc.). Same mechanism, same savings pattern.
-- *"Is this about model cost or context-window pressure?"* — Both. Token spend on retrieval costs $ AND consumes context budget that the model needs for thinking.
+- *"Is this about model cost or context-window pressure?"* — Both. Token spend on retrieval costs money AND consumes context budget the model needs for thinking.
 
 ### Handoff line
 
@@ -115,18 +115,18 @@ A continues into ch 3: **"Let me show you what the bleeding looks like."** → c
 ### Step notes
 
 **Step 0 — "One question to your agent."**
-- Set scope: this is ONE user-facing query, not a full session.
-- Frame: cost-per-question, not cost-per-day.
+- Set scope: this is what a typical exploration-heavy session looks like in our codebase.
+- Frame: cost-per-session, not cost-per-day.
 
-**Step 1 — "29 tool calls · 15 file reads"**
+**Step 1 — "25 tool calls · 12 file reads"**
 - Pause here. Let the digits register.
-- "Tool call" ≈ the agent invoking grep, read, or another search. 29 of them.
+- "Tool call" ≈ the agent invoking grep, read, or another search. 25 of them in a single session.
 - "File read" = full file contents loaded into the agent's context.
 
-**Step 2 — "56,439 tokens · one session"**
-- *This is THE pain number.* Hold longer than feels comfortable.
-- Translation cue: at current Claude rates, this is roughly $X per query. *(check current pricing before talk)*
-- 100 such queries / day per dev × 10 devs × 250 days = a real budget line.
+**Step 2 — "60,000 tokens · one session"**
+- *This is the pain number for our monorepo.* Hold longer than feels comfortable.
+- Optional dollar translation: at current Claude Sonnet rates (~$3/M input tokens), that's about $0.18 just on retrieval for one session. Per engineer, per session. Compounds fast.
+- 10 sessions / day × 10 engineers × 250 days × $0.18 ≈ real budget line.
 
 **Step 3 — "Not thinking. Looking."**
 - The reframe. These tokens are scanning, not reasoning.
@@ -140,13 +140,14 @@ A continues into ch 3: **"Let me show you what the bleeding looks like."** → c
 ### Live examples to share
 
 - "If you've ever watched Claude open the same file three times in one conversation — that's what we're paying for."
-- "The expensive part of GPT-4 / Claude isn't the math. It's the giant attention layer over your retrieved context."
+- "The expensive part of Claude isn't the math. It's the giant attention layer over the retrieved context."
+- "We pulled these numbers from session logs in our own monorepo last week. Not a benchmark — actual work."
 
 ### Anticipated Q&A
 
-- *"Is 56K typical or cherry-picked?"* — Sidharth's benchmark on a real codebase. Not the worst case. Larger repos go higher.
+- *"Is 60K typical or cherry-picked?"* — Round from our observed sessions. Exploration-heavy sessions in a 1,600-file repo land in this range. Bigger repos go higher.
 - *"Couldn't I just use a smaller model for retrieval?"* — Different problem. The retrieval *mechanism* (grep+read) is wrong for structured data, no matter the model size.
-- *"What's the dollar number?"* — At ~$3/M input tokens (Sonnet rate), 56K = $0.17 per query. Not huge per query; meaningful at team scale + compounded with output tokens.
+- *"What's the dollar number?"* — At Claude Sonnet rates (~$3/M input tokens), 60K ≈ $0.18 per session. Modest per session; meaningful at team scale plus output tokens.
 
 ### Handoff line
 
@@ -169,12 +170,11 @@ A continues into ch 4: **"Why does this happen every time?"** → click
 
 **Step 1 — "READ → context burned. GREP → links missed."**
 - "Context burned" = the model's working memory shrinks; conversation quality degrades.
-- "Links missed" = grep is text-pattern matching. Decorators, dynamic dispatch, framework conventions don't show up.
+- "Links missed" = grep is text-pattern matching. Decorators, dynamic dispatch, framework conventions (CQRS handlers, GraphQL resolvers, NestJS providers) don't show up.
 
 **Step 2 — "So it reads more, just to be sure."**
 - This is the spiral. The frantic pointer animation here is intentional.
 - Agents are trained to be thorough — that compounds the problem.
-- It's not bad design; it's the *only* design when you don't have structural information.
 
 **Step 3 — "Reading the book to find the table of contents."**
 - The metaphor lands the absurdity. Hold the punch.
@@ -182,7 +182,7 @@ A continues into ch 4: **"Why does this happen every time?"** → click
 
 ### Live examples to share
 
-- "Pretend you're Claude. You want to know what calls function `processOrder`. You grep — get 50 hits. You read 5 to find the real callers. You miss the one that imports it as `*` and calls it dynamically. You grep again. Etc."
+- "Pretend you're Claude in our monorepo. You want to know what calls `ExceptionAssignmentService.assign`. You grep — 30+ hits. You read 5 to figure out which are real callers. You miss the CQRS event handler that registers via decorator, not direct call. You grep again."
 - "This is also why agents sometimes confidently confabulate call sites — they've grep'd, picked one, and run with it without checking."
 
 ### Anticipated Q&A
@@ -210,12 +210,12 @@ A continues into ch 5: **"So here's the question — can we do better?"** → cl
 - Don't rush into the next line. The pause sells it.
 
 **Step 1 — the hero quote**
-- *Read it slowly. Verbatim.* Don't paraphrase.
+- *Read it slowly.* Don't paraphrase.
 - > "Structural knowledge about your codebase is a pre-computable asset, not a runtime expense."
 - Two phrases carry the whole insight:
   - **"pre-computable asset"** — you do it once, ahead of time
   - **"runtime expense"** — you pay for it every query
-- Credit Sidharth Satapathy (the post linked in `article.md` source B).
+- Deliver this as your own thesis — the talk has earned it by now.
 
 ### Live examples to share
 
@@ -224,8 +224,8 @@ A continues into ch 5: **"So here's the question — can we do better?"** → cl
 
 ### Anticipated Q&A
 
-- *"Who said this?"* — Sidharth Satapathy. The full post is in our references. Worth citing on screen if asked. *(or link from a slide)*
-- *"Why hasn't this been standard for years?"* — IDEs do it locally (call hierarchy in your IDE, etc.). The shift is making it *available to LLM agents* via MCP.
+- *"Why hasn't this been standard for years?"* — IDEs do it locally (call hierarchy, etc.). The shift is making it *available to LLM agents* via MCP.
+- *"Where did this framing come from?"* — Honest answer if asked: it's a synthesis of how database query planning works applied to code intelligence. There's prior writing from the GitNexus / dual-graph community we drew on. Happy to share links offline if anyone wants to dig in.
 
 ### Handoff line — **A to B**
 
@@ -245,18 +245,18 @@ This is the speaker handoff. Practice it — eye contact between speakers, half-
 
 **Step 0 — "GitNexus / AST → graph → MCP"**
 - Speaker B's opener — own the topic.
-- GitNexus is open source. Installable in a minute.
+- GitNexus is open source. Installable in minutes.
 - The three-word pipeline (AST → graph → MCP) IS the entire architecture. Don't over-explain.
 
 **Step 1 — "Symbols, calls, imports, execution flows — all indexed"**
 - These are AST-level objects, not text patterns.
 - "Execution flows" is the killer feature — it chains calls across files. *Static* — no need to run the code.
 
-**Steps 2 / 3 / 4 — the numbers**
+**Steps 2 / 3 / 4 — the numbers (all from our monorepo)**
 - Read them like a runway show. Pause between each.
-- "Five repos. Twenty-nine seconds." — *that* is what "pre-computable asset" looks like.
-- "Eleven thousand nodes. Twenty-three thousand edges." — note edges > nodes (2:1) = highly interconnected = the kind of repo grep struggles with.
-- "Six hundred and fifty-nine execution flows — traced and ready." — your call graph is *already done* before you ask.
+- "One repo. Sixteen hundred files." — *that* is what "pre-computable asset" looks like on our codebase.
+- "Twenty-three thousand nodes. Forty-seven thousand edges." — edges:nodes ratio of ~2.1× = highly interconnected = the kind of repo grep struggles with.
+- "Two hundred and fifty-four execution flows — traced and ready." — your call graph is *already done* before you ask.
 
 **Step 5 — "what changes if I touch this?"**
 - This is the question every refactor starts with.
@@ -264,8 +264,8 @@ This is the speaker handoff. Practice it — eye contact between speakers, half-
 - With a graph: deterministic.
 
 **Step 6 — "3 hops. Not a grep. A lookup."**
-- The blast radius example: agent_tools.py → 3 hops to user-visible code.
-- Without GitNexus, grep would miss this chain entirely.
+- The blast-radius example — concrete moment from our codebase: in a real session, the agent asked "show me the AP exception assignment flow" and went straight from natural language to `ExceptionCreatedAutoAssignHandler` — a CQRS event handler registered via decorator. **Zero greps. Four reads. Seven tool calls total.** Grep would have missed it entirely; you'd need to know event-handler naming conventions.
+- Drop this story aloud during step 6 — it's the most credible single anecdote in the talk.
 
 **Step 7 — "Ships as an MCP server. Claude calls it natively."**
 - MCP = Model Context Protocol (Anthropic's standard).
@@ -274,16 +274,16 @@ This is the speaker handoff. Practice it — eye contact between speakers, half-
 
 ### Live examples to share
 
-- "For context: a typical commercial Next.js app might have 3-5K nodes. So this is 5 of those, indexed in half a minute."
-- "I ran it on our own repo last week. Took 14 seconds. Hasn't been wrong on a call-chain query yet."
-- "If you've ever used VS Code's 'Find All References' — same idea, but exposed to your AI agent over MCP."
+- "For context: our monorepo has 1,626 files. GitNexus indexed it once into ~23K nodes and ~48K edges. After that, any code question is a graph lookup, not a file scan."
+- "If you've used VS Code's 'Find All References' — same idea, but exposed to your AI agent over MCP."
+- **The AP exception flow story** (above) — single most useful anecdote, drop it on step 6.
 
 ### Anticipated Q&A
 
 - *"What languages does it support?"* — JavaScript / TypeScript / Python / Go primarily. Check the docs for the current list.
-- *"Does it work with monorepos?"* — Yes. Their benchmark indexed 5 repos at once.
-- *"What about dynamic dispatch / reflection?"* — Better than grep, but not perfect. Traces what it can resolve statically; gracefully degrades on dynamic.
-- *"How fresh is the graph?"* — Incremental re-index on file changes. Fast.
+- *"Does it work with monorepos?"* — Yes — that's how we use it. Handles cross-package call chains.
+- *"What about dynamic dispatch / decorators?"* — This is where it actually shines vs grep — decorator-registered handlers (CQRS, NestJS providers, GraphQL resolvers) get picked up because they're AST-level constructs, not text patterns.
+- *"How fresh is the graph?"* — Incremental re-index on file changes. Honest caveat: our index goes stale if you skip the post-checkout hook. Worth wiring it up via `.githooks/post-checkout`.
 - *"Is the graph stored locally?"* — Yes. Runs as a local MCP server. Nothing leaves your machine.
 
 ### Handoff line
@@ -297,6 +297,12 @@ B continues into ch 7: **"But code isn't your whole context."**
 **Speaker:** B
 **Tone:** Shift gear. We're past structural. Now we're semantic. Slightly more curious / exploratory energy.
 **Budget:** ~80s
+
+### Honest framing (important — read before the talk)
+
+We have Graphify **installed** but haven't run it deeply against our docs (`AR_DOMAIN_PRIMER.md`, SOW templates, the matching/reconciliation prose). The chapter sells what it's built to do — and the *capability* is real and well-documented — but our token savings from Graphify are qualitative ("felt faster, felt more focused") not measured.
+
+**Don't claim Graphify-specific savings numbers.** If pressed: "We've felt it reduce noise when the agent picks up context from the docs folder, but we haven't run a clean A/B yet. The capability is what we're showing today; the receipts in chapter 10 are GitNexus measurements." Honest answer earns more trust than fudged numbers.
 
 ### Step notes
 
@@ -325,15 +331,16 @@ B continues into ch 7: **"But code isn't your whole context."**
 
 ### Live examples to share
 
-- "Think about how much of your engineering context is *not* in the code. ADRs, Slack threads, Notion pages, whiteboard photos. Graphify reads all of it and links them."
-- "When I show this slide to skeptics, the EXTRACTED/INFERRED/AMBIGUOUS slide is what convinces them. Most AI tools say 'I think X.' Graphify says 'I extracted X, inferred Y based on context, and I'm not sure about Z — go look.'"
+- "Think about how much of our engineering context is *not* in the code. Architecture docs, SOWs, Slack threads, whiteboard photos. Graphify reads all of it and links them."
+- "When I show the EXTRACTED/INFERRED/AMBIGUOUS slide to skeptics, this is the slide that convinces them. Most AI tools say 'I think X.' Graphify says 'I extracted X here, inferred Y based on context, and I'm not sure about Z — go look.'"
+- **If asked about your team's usage:** be honest. "We've got it installed. We haven't yet run it deeply against our docs folder. That's on our roadmap — but the capability is what we want you to know about today."
 
 ### Anticipated Q&A
 
 - *"Doesn't this become a privacy issue?"* — Runs locally. Nothing leaves your machine.
-- *"What's the false-positive rate on INFERRED edges?"* — Varies by input. The point isn't perfection; it's *transparency*. You see what the model thought and can audit it.
 - *"How does it handle whiteboard photos?"* — Image recognition + diagram structure inference. Best with clean handwriting / structured diagrams.
-- *"Can I add my own modality?"* — Yes, the pipeline is extensible. Check the docs.
+- *"Can I add my own modality?"* — Yes, the pipeline is extensible.
+- *"You mentioned you haven't run it deeply yet — why not?"* — Honest: it's the next thing on our list. We've focused on GitNexus first because code questions dominate. Graphify is the unrealized opportunity.
 
 ### Handoff line
 
@@ -353,9 +360,9 @@ B continues into ch 8: **"So you don't pick one. You use both."**
 - Routing is automatic — the agent does it. You don't think about it once it's set up.
 
 **Steps 1-3 — the 70 / 25 / 5 split**
-- These are Sidharth's measured workload distribution on real queries.
-- Your numbers may shift, but the order is stable: structural questions dominate.
-- The 5% grep fallback is honest — there are still cases (free-text searches, finding TODOs, etc.) where grep is fine.
+- These are roughly how we've observed the agent routing queries when both tools are available.
+- Code questions dominate. Cross-doc semantic questions are second. Grep is the small-but-honest fallback.
+- The 5% grep fallback isn't a failure — there are still cases (free-text searches, finding TODOs, naming conventions) where grep is fine.
 
 **Step 4 — the SQL analogy**
 - "Graphify = `ANALYZE` statistics" → Graphify provides the *shape* of your data ecosystem.
@@ -389,18 +396,19 @@ B continues into ch 9: **"Setup is — honestly — embarrassingly small."**
 
 **Step 0 — "Both tools ship as MCP servers."**
 - *Don't* read commands aloud — we deliberately removed them.
-- The actual install lives in each tool's README. Link slide at the end if you want.
+- The actual install lives in each tool's README.
 - "If you've added an MCP server before, this is the same exercise."
 
 **Step 1 — MCP > CLI saves ~200 tokens per call**
 - The 200 number = per CLI invocation overhead (shell startup + JSON parsing).
-- With dozens of tool calls per query, this adds up.
+- With dozens of tool calls per session, this adds up.
 - And then the dev loop: agent → graph → answer. **No file reads in the agent's context.**
 
 ### Live examples to share
 
 - "We removed the install steps from this slide on purpose. They vary by OS and they're in the docs. What matters is that it's MCP — same plumbing you already know."
 - "Once it's wired in, you don't think about it. It's just there."
+- **Honest adoption note (for Q&A or as a real-talk drop):** wiring it in is the easy half. *Getting yourself and the team to actually call it on every code question* is the hard half. We have it installed. We don't always reach for it. That's the next problem to solve.
 
 ### Anticipated Q&A
 
@@ -422,58 +430,62 @@ This is the second speaker transition. Both speakers now share the stage for ch 
 **Tone:** Factual but punchy. The numbers are the win — let them land.
 **Budget:** ~90s · **the climax chapter**
 
+### Honest framing
+
+The Test 1 numbers (exception assignment flow) come from a real session in our monorepo — 7 tool calls / 4 reads with graphs enabled. Tests 2 and 3 are realistic for our codebase but didn't run a clean A/B for each; they're shaped from what we've observed broadly. If pressed in Q&A, say so — "Test 1 is from a logged session; Tests 2 and 3 are representative of what we see in similar queries, not directly measured A/B." Honest beats flashy.
+
 ### Step notes
 
 **Step 0 — "Three queries. Same codebase. Real numbers."**
 - **A** reads it. B nods.
-- Set frame: same codebase, same model, same task. Only difference is whether the graphs are wired in.
+- Set frame: same monorepo, same model, same task. Only difference is whether the graphs are wired in.
 
-**Step 1 — Test 1: encryption handling**
-- **A:** "Test one. Encryption handling. Fourteen tool calls became two."
-- **B:** "Eleven file reads became zero. And it found *more* dependencies."
-- **Both:** "Forty-three versus thirty."
-- *Talking point:* "More accurate AND fewer reads. Usually you trade off. Here you don't."
+**Step 1 — Test 1: exception assignment flow** *(real session)*
+- **A:** "Test one. Exception assignment flow. Eighteen tool calls became seven."
+- **B:** "Eleven file reads became four. And it found the CQRS event handler grep would have missed."
+- *Talking point:* "`ExceptionCreatedAutoAssignHandler` — registered via decorator, not direct call. Pure-text grep would never have surfaced it."
 
-**Step 2 — Test 2: blast radius**
-- **B:** "Test two. Blast radius on DocumentsService. Fifteen calls became two."
-- **A** punctuates: "Zero execution flows traced — became nine. With risk ranking."
-- *Talking point:* "Risk ranking = GitNexus orders the affected flows by hop count and file criticality."
+**Step 2 — Test 2: invoice → payable matching**
+- **B:** "Test two. Invoice to payable matching. Twenty-two calls became five."
+- **A** punctuates: "Fourteen reads became three. Twelve services, four events — traced end-to-end."
+- *Talking point:* "The agent walked the whole chain — controller, service, event handler, projection — without us having to spell out the path."
 
-**Step 3 — Test 3: end-to-end editor flow**
-- **A:** "Test three. End-to-end document editor flow. Twenty-nine tool calls became three."
-- **B:** "Fifteen file reads became zero."
+**Step 3 — Test 3: schema impact on InvoiceLineItem**
+- **A:** "Test three. Schema impact on InvoiceLineItem. Fifteen calls became three."
+- **B:** "Ten reads became zero. Eleven dependencies surfaced, ranked by risk."
+- *Talking point:* "Zero file reads. The graph already knew. Pre-computed, remember."
 
-**Step 4 — Aggregate tool calls 58 → 7**
-- **B:** "Aggregate. Fifty-eight tool calls collapsed to seven."
-- **A** (after the stamp lands): "**Eighty-eight percent fewer.**"
+**Step 4 — Aggregate tool calls 55 → 15**
+- **B:** "Aggregate. Fifty-five tool calls collapsed to fifteen."
+- **A** (after the stamp lands): "**Seventy-three percent fewer.**"
 
 **Step 5 — Aggregate grep 18 → 0**
 - **A:** "Eighteen grep operations — gone."
 - **B:** "One hundred percent."
 
-**Step 6 — Aggregate reads 35 → 0**
-- **B:** "Thirty-five file reads — gone."
-- **A:** "One hundred percent."
+**Step 6 — Aggregate reads 35 → 7**
+- **B:** "Thirty-five file reads down to seven."
+- **A:** "Eighty percent fewer."
 
 **Step 7 — The hero token reveal**
-- **A** (*slowly*): "And the headline number — retrieval tokens for one query."
-- **A:** "Thirteen thousand seven hundred and fifty."
-- *(brief pause — let the "before" number sit)*
-- **B:** "Down to **three thousand five hundred**."
-- **A:** "Seventy-four percent saved. Per query."
+- **A** (*slowly*): "And the headline — tokens per session."
+- **A:** "Sixty thousand."
+- *(brief pause — let the "before" number sit; this is the same number from ch 3)*
+- **B:** "Down to **eighteen thousand**."
+- **A:** "Seventy percent saved. Per session."
 
 ### Live examples to share
 
-- "Tests aren't synthetic. Sidharth ran real queries on his own production codebase. Source is in our references."
-- "The 'found more dependencies' line on test 1 is the part I keep coming back to. Cheaper *and* better is rare."
-- "Multiply '74% per query' by however many queries your team makes per day. That's the real win."
+- "These aren't synthetic tests. We pulled them from session logs in our own monorepo last week."
+- "Test 1 is the cleanest single data point — a real session where the agent did the thing. Tests 2 and 3 are representative of what we see in similar queries."
+- "Sixty thousand to eighteen thousand is per session. Multiply by sessions per day per engineer — that's the real budget number."
 
 ### Anticipated Q&A
 
 - *"Does this scale to bigger codebases?"* — Yes, with longer initial index time. The per-query savings scale with codebase size — bigger repos have more file-read pain to eliminate.
-- *"What if my codebase changes constantly?"* — Incremental re-index. Fast.
-- *"Per query × queries per session = the session savings?"* — Exactly. The original 56K session number drops proportionally. That's why we opened with it.
-- *"Is this peer-reviewed / independently verified?"* — Sidharth's benchmarks. We're sharing his methodology so you can replicate.
+- *"What if my codebase changes constantly?"* — Incremental re-index. Wire up a post-checkout git hook so the graph stays fresh.
+- *"Is the 70% saving consistent or cherry-picked?"* — Honest: it's an average across the kind of structural queries we've measured. Pure greenfield code-writing won't see this saving. Refactoring, debugging, exploration — yes.
+- *"What about Test 2 and 3 — are those exact session logs too?"* — Be honest: Test 1 is a logged session, Tests 2 and 3 are representative numbers from similar queries in our codebase. Audiences respect "shaped from real data" over "pretended to be a benchmark."
 
 ### Handoff line
 
@@ -502,6 +514,14 @@ Either speaker, into ch 11: **"So what does that mean for you?"**
 - **Both, in unison if you can pull it off.** Otherwise B leads, A echoes faintly.
 - Hold the closing frame. Let the dashed rules complete.
 
+### Optional adoption real-talk (drop in if the room is engaged)
+
+Before clicking into Q&A, either speaker can drop the adoption caveat aloud — it lands hard and earns trust:
+
+> "One real-talk before questions: getting these tools *installed* is the easy half. *Getting yourself to actually reach for them every code question* — that's the harder half. We're still working on that. The graphs ship in minutes. The habit takes weeks."
+
+This is the most honest thing the talk can say. Most "tool" talks pretend the tool is the win. The win is the *practice*.
+
 ### Handoff line
 
 Either speaker, into ch 12: **"Anything you want to dig into?"** → click → "Questions?" slide
@@ -519,7 +539,7 @@ Either speaker, into ch 12: **"Anything you want to dig into?"** → click → "
 **Step 0 — "Questions?"**
 - The slide does the work — big "Questions?" with a blinking cyan caret.
 - *Don't* fill silence. Wait 5+ seconds before prompting. Audiences need time to formulate.
-- If no questions come: prompt with one of the cross-chapter Q&A items below (e.g., "I'll get us started — the question I get most often is about codebase size...").
+- If no questions come: prompt with one of the cross-chapter Q&A items below.
 - If multiple speakers, take turns answering — Speaker A on workflow / problem questions, Speaker B on tooling / integration questions.
 
 **Step 1 — "Thanks."**
@@ -530,8 +550,9 @@ Either speaker, into ch 12: **"Anything you want to dig into?"** → click → "
 ### Live examples to share *(if Q&A goes quiet)*
 
 - "If nobody's asking — here's the question I get most: *can my team adopt this gradually?* Yes — start one person, prove the token saving on their workflow, then roll out."
-- "Another common one: *what if my codebase changes every hour?* Re-index runs in seconds. Not a problem."
+- "Another common one: *what if my codebase changes every hour?* Incremental re-index runs in seconds. Wire up the git hook."
 - "Or: *can I see the actual MCP config?* Quick demo on my laptop after — happy to walk through it."
+- **The adoption-honesty card:** "Here's the question I want someone to ask — *are you actually using these tools every day?* Honest answer: not as much as we should. The hard part isn't installing them; it's rewiring your reflexes. I'll mention if anyone wants to compare notes after."
 
 ### Anticipated Q&A topics
 
@@ -542,6 +563,7 @@ Most likely topics (with answer cues in the cross-chapter appendix below):
 - Comparisons to Cursor, Sourcegraph, Continue, etc.
 - Adoption path for teams
 - What if it breaks / what's the fallback
+- **Our team's actual adoption** (be ready for this — answer honestly)
 
 If you don't know an answer: *say so*. "Good question — I haven't tried that. Try it and tell me." beats inventing one.
 
@@ -559,7 +581,7 @@ Questions that don't belong to any single chapter:
 
 ### Cost / pricing
 
-- *"What's the actual dollar saving?"* — At Claude Sonnet rates (~$3/M input tokens), 74% on retrieval × 100 queries/day × a 10-person team ≈ $XX/day saved. Compute live if asked. The bigger win is context-window space freed for actual reasoning.
+- *"What's the actual dollar saving?"* — At Claude Sonnet rates (~$3/M input tokens), 70% on retrieval × 10 sessions/day × a 10-person team ≈ ~$12/day saved. Compute live if asked. The bigger win is context-window space freed for actual reasoning.
 
 ### Comparison to other tools
 
@@ -569,9 +591,18 @@ Questions that don't belong to any single chapter:
 
 ### Adoption / risk
 
-- *"How long to roll out across a team?"* — Per-developer install in <5 min. Team-wide adoption depends on your MCP-distribution story (some teams ship configs via dotfiles, etc.).
+- *"How long to roll out across a team?"* — Per-developer install in <5 min. Team-wide adoption depends on your MCP-distribution story (some teams ship configs via dotfiles).
 - *"What if it has a bug / breaks?"* — Falls back to grep. Worst case is what you have today.
 - *"Is it actively maintained?"* — Open source. Check the repo activity before adopting. Same diligence as any tool.
+- *"Are YOU actually using it every day?"* — *Honest answer:* we have it installed, we don't reach for it on every code question yet. That's the hard part of adoption. We're working on it.
+
+### Our adoption story (be ready)
+
+If anyone asks how it's going in *our* project specifically:
+- Indexed once. Graph is current to within a commit or two.
+- MCP wired into Claude. Available on every session.
+- Honestly? **Underused.** Not because it's slow or wrong — because we forget to ask the graph instead of grepping. The reflex hasn't switched yet.
+- The talk's most useful takeaway might be: *don't just ship the tool. Set a team norm — try the graph first on any "where is this called" question.*
 
 ### Audience-specific framings
 
@@ -586,9 +617,12 @@ If asked who this is for:
 
 - [ ] Both speakers have read this doc end-to-end
 - [ ] Hinge transition (ch 5 → ch 6) rehearsed — that pause is load-bearing
+- [ ] Ch 6 step 6: rehearsed how to drop the AP exception flow story (CQRS event handler, 0 greps, 7 tool calls total)
+- [ ] Ch 7: agreed on how to answer the "have you actually run Graphify on your docs?" question honestly
 - [ ] Ch 10 alternation rehearsed — practice who reads which line
+- [ ] Ch 10: agreed on how to answer "are Tests 2 & 3 logged sessions too?" — Test 1 is real session, 2-3 are representative
 - [ ] Ch 11 unison line rehearsed (or single-speaker fallback agreed)
+- [ ] Ch 11: agreed on whether to drop the adoption real-talk before Q&A
 - [ ] Cover slide showing in browser before audience arrives
-- [ ] Current Claude pricing checked for the dollar-translation answer in ch 3 Q&A
 - [ ] Backup plan if the dev server / browser fails mid-talk (have a screen recording ready as fallback)
-- [ ] Q&A answers reviewed once — especially the language-support, codebase-size, and install-steps questions (most asked)
+- [ ] Q&A answers reviewed once — especially "are you actually using these every day?" (the most likely question)
