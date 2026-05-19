@@ -62,6 +62,7 @@ export default function App() {
         chapters={CHAPTERS}
         cursor={stepper.cursor}
         onJumpChapter={stepper.jumpToChapter}
+        githubUrl={null}
       />
       <AutoToggle mode={mode} onCycle={cycleMode} />
       <AutoStartGate
