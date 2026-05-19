@@ -1,0 +1,139 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Chapter 10 — Closing (was get-started)
+ *
+ * Three-step outro. Two slogan reveals + a clean closing frame. No
+ * command recap (intentionally platform-neutral).
+ *
+ * Class prefix: .cl-
+ * ───────────────────────────────────────────────────────────────────── */
+
+.cl-scene { color: var(--text); }
+.cl-em { color: var(--accent); }
+
+/* ─── step 0 — index once, reuse forever ─── */
+.cl-step0 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+}
+.cl-h0 {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 240px;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+.cl-clause {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(32px);
+  animation: cl-fade-up 900ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+.cl-clause-1 { animation-delay: 100ms; }
+.cl-clause-2 { animation-delay: 900ms; }
+.cl-rule {
+  display: block;
+  width: 60%;
+  height: 2px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--accent) 0,
+      var(--accent) 14px,
+      transparent 14px,
+      transparent 28px
+    );
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: cl-rule-grow 1200ms cubic-bezier(0.86, 0, 0.07, 1) 1700ms forwards;
+}
+
+/* ─── step 1 — pay tokens for thinking ─── */
+.cl-step1 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 64px;
+}
+.cl-h1 {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 168px;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+.cl-h1-2 { text-align: right; }
+.cl-strike {
+  position: relative;
+  color: var(--text-mute);
+}
+.cl-strike::after {
+  content: "";
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  top: 56%;
+  height: 8px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: cl-strike 600ms cubic-bezier(0.86, 0, 0.07, 1) 1700ms forwards;
+}
+
+/* ─── step 2 — closing frame ─── */
+.cl-step2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+}
+.cl-end-rule {
+  display: block;
+  width: 320px;
+  height: 2px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--accent) 0,
+      var(--accent) 14px,
+      transparent 14px,
+      transparent 28px
+    );
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: cl-rule-grow-center 900ms cubic-bezier(0.86, 0, 0.07, 1) 200ms forwards;
+}
+.cl-end-rule-2 {
+  animation-delay: 1600ms;
+}
+.cl-end-line {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 144px;
+  letter-spacing: -0.025em;
+  color: var(--accent);
+  text-align: center;
+  opacity: 0;
+  animation: cl-fade-up 900ms cubic-bezier(0.19, 1, 0.22, 1) 800ms forwards;
+}
+
+/* ── shared keyframes ── */
+@keyframes cl-fade-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes cl-rule-grow {
+  to { transform: scaleX(1); }
+}
+@keyframes cl-rule-grow-center {
+  to { transform: scaleX(1); }
+}
+@keyframes cl-strike {
+  to { transform: scaleX(1); }
+}

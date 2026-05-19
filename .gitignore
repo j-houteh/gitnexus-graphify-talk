@@ -1,0 +1,8 @@
+.DS_Store
+*.log
+.vscode/
+.idea/
+
+# Build artifacts (the nested presentation/.gitignore covers Vite specifics)
+node_modules/
+dist/

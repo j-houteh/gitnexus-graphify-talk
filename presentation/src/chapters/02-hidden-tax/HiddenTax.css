@@ -1,0 +1,319 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Chapter 01 — The Hidden Tax
+ *
+ * Five-step cold open. Each step has its own dominant motion:
+ *   0 · typing caret blink
+ *   1 · counter cards rise-in (staggered)
+ *   2 · hero token meter scale-in (climax)
+ *   3 · strike-through on "thinking"
+ *   4 · rule grow + outro
+ *
+ * All colors/fonts are token-driven so the chapter survives theme swaps.
+ * Class prefix: .ht-
+ * ───────────────────────────────────────────────────────────────────── */
+
+.ht-scene { color: var(--text); }
+
+.ht-kicker {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+/* ─── step 0 — cold open ─── */
+.ht-step0 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 56px;
+}
+.ht-h0 {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 144px;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0;
+  max-width: 20ch;
+  opacity: 0;
+  animation: ht-fade-up 800ms cubic-bezier(0.19, 1, 0.22, 1) 120ms forwards;
+}
+.ht-caret {
+  display: inline-block;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  margin-left: 0.05em;
+  animation: ht-blink 1.05s steps(1, end) infinite;
+}
+
+/* ─── step 1 — counter row ─── */
+.ht-step1 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 72px;
+}
+.ht-counter-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1280px;
+}
+.ht-counter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 56px 64px 48px;
+  background: var(--surface-2);
+  border: 2px dashed var(--accent);
+  opacity: 0;
+}
+.ht-counter::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 24px;
+  height: 24px;
+  border-top: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+}
+.ht-counter::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: -2px;
+  width: 24px;
+  height: 24px;
+  border-bottom: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+}
+.ht-counter-num {
+  font-size: 240px;
+  color: var(--accent);
+  line-height: 0.85;
+  font-variant-numeric: tabular-nums;
+}
+.ht-counter-label {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.ht-rise   { animation: ht-counter-rise 700ms cubic-bezier(0.19, 1, 0.22, 1) 100ms forwards; }
+.ht-rise-2 { animation: ht-counter-rise 700ms cubic-bezier(0.19, 1, 0.22, 1) 380ms forwards; }
+.ht-caption-mono {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--text-mute);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.ht-fade-late {
+  opacity: 0;
+  animation: ht-fade-up 600ms cubic-bezier(0.19, 1, 0.22, 1) 900ms forwards;
+}
+
+/* ─── step 2 — hero token meter ─── */
+.ht-step2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 72px;
+}
+.ht-mini-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--text-mute);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: ht-fade-up 600ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+.ht-mini-sep { opacity: 0.45; color: var(--accent); }
+.ht-mini-trail { color: var(--text-2); }
+.ht-token-meter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 56px 88px 64px;
+  background: var(--surface-2);
+  border: 2px solid var(--accent);
+  box-shadow:
+    inset 0 0 0 6px var(--shell),
+    inset 0 0 0 8px var(--accent),
+    0 0 80px var(--accent-soft);
+  opacity: 0;
+  transform: scale(0.92);
+  animation: ht-token-pop 900ms cubic-bezier(0.34, 1.56, 0.64, 1) 280ms forwards;
+}
+.ht-token-num {
+  font-size: 360px;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  line-height: 0.88;
+}
+.ht-token-unit {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+/* ─── step 3 — reframing ─── */
+.ht-step3 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  gap: 40px;
+}
+.ht-corner-token {
+  position: absolute;
+  top: -16px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 24px 32px;
+  border: 2px dashed var(--rule);
+  background: var(--surface-2);
+  opacity: 0;
+  animation: ht-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) 200ms forwards;
+}
+.ht-corner-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+.ht-corner-num {
+  font-family: var(--font-mono);
+  font-size: 52px;
+  color: var(--text-2);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.ht-h3 {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 208px;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin: 0;
+  opacity: 0;
+  animation: ht-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) 80ms forwards;
+}
+.ht-strike {
+  position: relative;
+  color: var(--text-mute);
+}
+.ht-strike::after {
+  content: "";
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  top: 54%;
+  height: 12px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: ht-strike 520ms cubic-bezier(0.86, 0, 0.07, 1) 700ms forwards;
+}
+.ht-emph {
+  color: var(--accent);
+  display: inline-block;
+  opacity: 0;
+  animation: ht-fade-up 600ms cubic-bezier(0.19, 1, 0.22, 1) 1080ms forwards;
+}
+
+/* ─── step 4 — outro ─── */
+.ht-step4 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 56px;
+}
+.ht-h4 {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 152px;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0;
+  max-width: 22ch;
+  opacity: 0;
+  animation: ht-fade-up 800ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+.ht-rule-wrap {
+  width: 50%;
+  height: 2px;
+  overflow: hidden;
+}
+.ht-rule {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--accent) 0,
+      var(--accent) 12px,
+      transparent 12px,
+      transparent 24px
+    );
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: ht-rule-grow 1100ms cubic-bezier(0.86, 0, 0.07, 1) 500ms forwards;
+}
+.ht-foot {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  opacity: 0;
+  animation: ht-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) 1300ms forwards;
+}
+
+/* ─── shared keyframes ─── */
+@keyframes ht-fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes ht-counter-rise {
+  from { opacity: 0; transform: translateY(48px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes ht-token-pop {
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes ht-strike {
+  to { transform: scaleX(1); }
+}
+@keyframes ht-rule-grow {
+  to { transform: scaleX(1); }
+}
+@keyframes ht-blink {
+  50% { opacity: 0; }
+}

@@ -1,0 +1,283 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Chapter 02 — Over-Read Loop
+ *
+ * Four-step diagnosis. Dominant motion per step:
+ *   0 · pointer hop loop (calm) + word-by-word reveal
+ *   1 · annotation cards slide-in (tree dims behind)
+ *   2 · pointer goes frantic with ghost trails
+ *   3 · tree fades to wireframe; hero metaphor lands
+ *
+ * Tree geometry: each row is 60px tall, mono 32px. Pointer is
+ * absolutely positioned and translateY()s between row centers.
+ * Row Y centers: 30 / 90 / 150 / 210 / 270 / 330 / 390.
+ *
+ * Class prefix: .ol-
+ * ───────────────────────────────────────────────────────────────────── */
+
+.ol-scene { color: var(--text); }
+
+/* ─── file tree (shared primitive) ─── */
+.ol-tree {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 32px;
+  color: var(--accent);
+  line-height: 60px;
+  letter-spacing: -0.01em;
+  white-space: pre;
+  user-select: none;
+}
+.ol-tree-calm    .ol-row { color: var(--accent); opacity: 0.92; }
+.ol-tree-frantic .ol-row { color: var(--accent); opacity: 0.92; }
+.ol-tree-ghost   .ol-row { color: var(--text-faint); opacity: 0.45; }
+.ol-tree-ghost { filter: blur(0.3px); }
+
+.ol-row { height: 60px; }
+
+/* ─── pointer ─── */
+.ol-pointer {
+  position: absolute;
+  left: -56px;
+  top: 21px; /* center of row 0 (row-center 30px - 9px half-pointer) */
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 24px var(--accent-glow);
+  z-index: 2;
+}
+.ol-pointer::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  animation: ol-pulse 1.4s ease-out infinite;
+  opacity: 0.7;
+}
+.ol-pointer-calm {
+  animation: ol-hop-calm 4.4s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+}
+.ol-pointer-frantic {
+  animation: ol-hop-frantic 1.8s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+}
+@keyframes ol-hop-calm {
+  0%,  18% { transform: translateY(120px); }   /* auth.ts */
+  22%, 43% { transform: translateY(300px); }   /* handlers.ts */
+  47%, 68% { transform: translateY(180px); }   /* crypto.ts */
+  72%, 95% { transform: translateY(120px); }   /* auth.ts */
+  100%     { transform: translateY(120px); }
+}
+@keyframes ol-hop-frantic {
+  0%,  12% { transform: translateY(60px); }    /* api.ts */
+  14%, 26% { transform: translateY(240px); }   /* db.ts */
+  28%, 40% { transform: translateY(120px); }   /* auth.ts */
+  42%, 54% { transform: translateY(360px); }   /* routes.ts */
+  56%, 68% { transform: translateY(180px); }   /* crypto.ts */
+  70%, 82% { transform: translateY(300px); }   /* handlers.ts */
+  84%, 95% { transform: translateY(60px); }    /* api.ts */
+  100%     { transform: translateY(60px); }
+}
+@keyframes ol-pulse {
+  0%   { transform: scale(0.7); opacity: 0.9; }
+  100% { transform: scale(2.1); opacity: 0; }
+}
+
+/* ─── frantic trails (ghost copies of the pointer) ─── */
+.ol-trail {
+  position: absolute;
+  left: -56px;
+  top: 21px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.18;
+  z-index: 1;
+  filter: blur(2px);
+}
+.ol-trail-a {
+  animation: ol-hop-frantic 1.8s cubic-bezier(0.86, 0, 0.07, 1) -0.2s infinite;
+}
+.ol-trail-b {
+  animation: ol-hop-frantic 1.8s cubic-bezier(0.86, 0, 0.07, 1) -0.4s infinite;
+  opacity: 0.1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+ * step 0 — grep / read loop
+ * ───────────────────────────────────────────────────────────────────── */
+.ol-step0 {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(420px, 520px) 1fr;
+  gap: 160px;
+  align-items: center;
+  padding-left: 56px;
+}
+.ol-h0 {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 168px;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+.ol-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: ol-word-in 480ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+.ol-word-1 { animation-delay: 0ms; }
+.ol-word-2 { animation-delay: 1100ms; color: var(--accent); }
+.ol-word-3 { animation-delay: 2200ms; }
+.ol-word-4 { animation-delay: 3300ms; color: var(--accent); }
+@keyframes ol-word-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+.ol-step0-foot {
+  margin-top: 56px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  opacity: 0;
+  animation: ol-fade-up 600ms cubic-bezier(0.19, 1, 0.22, 1) 4000ms forwards;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+ * step 1 — annotation cards
+ * ───────────────────────────────────────────────────────────────────── */
+.ol-step1 {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(420px, 520px) 1fr;
+  gap: 160px;
+  align-items: center;
+  padding-left: 56px;
+}
+.ol-tree-dim { opacity: 0.32; }
+.ol-step1-right {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.ol-card {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 36px 48px;
+  background: var(--surface-2);
+  border: 2px solid var(--rule);
+  opacity: 0;
+  transform: translateX(40px);
+  animation: ol-card-in 700ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+.ol-card-1 { animation-delay: 150ms; }
+.ol-card-2 { animation-delay: 520ms; }
+.ol-card-key {
+  font-family: var(--font-mono);
+  font-size: 36px;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  font-weight: 500;
+}
+.ol-card-arrow {
+  font-family: var(--font-mono);
+  font-size: 36px;
+  color: var(--text-mute);
+}
+.ol-card-val {
+  font-family: var(--font-display-cn);
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+@keyframes ol-card-in {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+ * step 2 — frantic + diagnosis
+ * ───────────────────────────────────────────────────────────────────── */
+.ol-step2 {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(420px, 520px) 1fr;
+  gap: 160px;
+  align-items: center;
+  padding-left: 56px;
+}
+.ol-step2-right {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.ol-h2 {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 152px;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin: 0;
+  opacity: 0;
+  animation: ol-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) 100ms forwards;
+}
+.ol-emph { color: var(--accent); }
+.ol-step2-foot {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  padding-top: 16px;
+  border-top: 2px dashed var(--rule);
+  opacity: 0;
+  animation: ol-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) 900ms forwards;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+ * step 3 — punch line
+ * ───────────────────────────────────────────────────────────────────── */
+.ol-step3 {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.ol-tree-ghost-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: ol-ghost-in 1100ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+@keyframes ol-ghost-in {
+  to { opacity: 1; }
+}
+.ol-h3 {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 168px;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0;
+  text-align: center;
+  max-width: 22ch;
+  opacity: 0;
+  animation: ol-fade-up 900ms cubic-bezier(0.19, 1, 0.22, 1) 400ms forwards;
+}
+
+/* ─── shared keyframes ─── */
+@keyframes ol-fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

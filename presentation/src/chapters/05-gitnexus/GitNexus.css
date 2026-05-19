@@ -1,0 +1,416 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Chapter 04 — GitNexus
+ *
+ * Eight-step structural-graph walkthrough. Shared SVG <Graph> primitive
+ * with state classes:
+ *   .gn-graph-emerge  · nodes radial-pop + edges draw (step 1)
+ *   .gn-graph-full    · all nodes + edges visible (steps 2-5)
+ *   .gn-graph-pulse   · pulsing cyan accent (step 4)
+ *   .gn-graph-blast   · blast-radius highlight, others dim (step 6)
+ *
+ * Class prefix: .gn-
+ * ───────────────────────────────────────────────────────────────────── */
+
+.gn-scene { color: var(--text); }
+
+/* ── shared layout ── */
+.gn-step-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.gn-graph-wrap {
+  width: 100%;
+  height: 720px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gn-graph {
+  width: 100%;
+  height: 100%;
+  max-width: 1100px;
+  display: block;
+}
+.gn-mono-label {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 12px;
+}
+
+/* ── graph edges ── */
+.gn-edge {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  opacity: 0.38;
+  fill: none;
+}
+.gn-edge-blast {
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+
+/* ── graph nodes ── */
+.gn-node {
+  fill: var(--accent);
+  stroke: var(--shell);
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ── state: emerge (step 1) ── */
+.gn-graph-emerge .gn-node {
+  opacity: 0;
+  transform: scale(0.2);
+  animation: gn-node-pop 600ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: calc(var(--i) * 80ms);
+}
+.gn-graph-emerge .gn-edge {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  opacity: 0;
+  animation: gn-edge-draw 700ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: calc(var(--i) * 60ms + 800ms);
+}
+@keyframes gn-node-pop {
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes gn-edge-draw {
+  to { stroke-dashoffset: 0; opacity: 0.38; }
+}
+
+/* ── state: full (steps 2-5) ── */
+.gn-graph-full .gn-node { opacity: 1; }
+.gn-graph-full .gn-edge { opacity: 0.38; }
+
+/* ── state: pulse (step 4) ── */
+.gn-graph-pulse .gn-edge {
+  animation: gn-edge-pulse 1.6s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 60ms);
+}
+@keyframes gn-edge-pulse {
+  0%, 100% { opacity: 0.25; stroke-width: 1.5; }
+  50%      { opacity: 1;    stroke-width: 2.5; }
+}
+
+/* ── state: blast (step 6) ── */
+.gn-graph-blast .gn-node {
+  opacity: 0.18;
+  fill: var(--text-faint);
+}
+.gn-graph-blast .gn-edge {
+  opacity: 0.08;
+}
+.gn-graph-blast .gn-node-blast {
+  opacity: 1;
+  fill: var(--accent);
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+  animation: gn-blast-pop 500ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: calc(var(--i) * 200ms + 200ms);
+  transform: scale(0.4);
+}
+.gn-graph-blast .gn-edge-blast {
+  opacity: 0;
+  stroke: var(--accent);
+  stroke-width: 3.5;
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: gn-edge-draw 600ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: calc(var(--i) * 200ms + 500ms);
+}
+@keyframes gn-blast-pop {
+  to { opacity: 1; transform: scale(1.3); }
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+ * step 0 — title
+ * ───────────────────────────────────────────────────────────────────── */
+.gn-step0 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+.gn-step0-label {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  opacity: 0;
+  animation: gn-fade-up 600ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+.gn-step0-h {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 320px;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  margin: 0;
+  color: var(--text);
+  opacity: 0;
+  animation: gn-fade-up 900ms cubic-bezier(0.19, 1, 0.22, 1) 200ms forwards;
+}
+.gn-step0-tag {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-family: var(--font-mono);
+  font-size: 36px;
+  letter-spacing: 0.06em;
+  color: var(--text-2);
+  opacity: 0;
+  animation: gn-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) 700ms forwards;
+}
+.gn-arrow { color: var(--accent); }
+.gn-em    { color: var(--accent); }
+
+/* ─────────────────────────────────────────────────────────────────────
+ * step 1 — emergence
+ * ───────────────────────────────────────────────────────────────────── */
+.gn-step1 {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.gn-step1-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  animation: gn-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) 1400ms forwards;
+}
+.gn-bullet-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.gn-bullet-list li {
+  font-family: var(--font-display-cn);
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  position: relative;
+  padding-left: 36px;
+}
+.gn-bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+ * counter cards (steps 2-4)
+ * ───────────────────────────────────────────────────────────────────── */
+.gn-counters {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.gn-counter {
+  padding: 40px 48px;
+  background: var(--surface-2);
+  border: 2px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.gn-counter-prev {
+  background: transparent;
+  border: 2px dashed var(--rule);
+  padding: 18px 24px;
+}
+.gn-counter-mini {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+.gn-counter-in {
+  opacity: 0;
+  transform: translateX(40px);
+  animation: gn-card-in 700ms cubic-bezier(0.19, 1, 0.22, 1) 200ms forwards;
+}
+.gn-counter-row {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+.gn-counter-num {
+  font-size: 128px;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  line-height: 0.9;
+}
+.gn-counter-unit {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.gn-counter-hero {
+  align-items: center;
+  text-align: center;
+  padding: 56px 64px;
+}
+.gn-counter-big {
+  font-size: 256px;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  line-height: 0.9;
+}
+.gn-counter-big-unit {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-top: 16px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+ * step 5 — the question
+ * ───────────────────────────────────────────────────────────────────── */
+.gn-question-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 56px 64px;
+  background: var(--surface-2);
+  border: 2px solid var(--accent);
+  position: relative;
+  opacity: 0;
+  animation: gn-card-in 700ms cubic-bezier(0.19, 1, 0.22, 1) 200ms forwards;
+}
+.gn-question-box::before {
+  content: "?";
+  position: absolute;
+  top: 32px;
+  right: 40px;
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-size: 160px;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.18;
+}
+.gn-question {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+ * step 6 — blast radius
+ * ───────────────────────────────────────────────────────────────────── */
+.gn-blast-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  opacity: 0;
+  animation: gn-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) 1000ms forwards;
+}
+.gn-blast-h {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 200px;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  margin: 0;
+}
+.gn-blast-sub {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  padding-top: 16px;
+  border-top: 2px dashed var(--rule);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+ * step 7 — MCP delivery
+ * ───────────────────────────────────────────────────────────────────── */
+.gn-step7 {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 32px;
+  align-items: center;
+}
+.gn-graph-wrap-shrink {
+  height: 600px;
+  opacity: 0;
+  animation: gn-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+.gn-mcp-line {
+  height: 0;
+  border-top: 2px dashed var(--accent);
+  opacity: 0;
+  animation: gn-fade-up 600ms cubic-bezier(0.19, 1, 0.22, 1) 500ms forwards;
+}
+.gn-mcp-box {
+  padding: 48px 56px;
+  background: var(--surface-2);
+  border: 2px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transform: translateX(40px);
+  animation: gn-card-in 700ms cubic-bezier(0.19, 1, 0.22, 1) 800ms forwards;
+}
+.gn-mcp-label {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.gn-mcp-title {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 88px;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--text);
+}
+.gn-mcp-sub {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+}
+
+/* ── shared keyframes ── */
+@keyframes gn-fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes gn-card-in {
+  to { opacity: 1; transform: translateX(0); }
+}

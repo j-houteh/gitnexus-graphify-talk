@@ -1,0 +1,151 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Chapter 01 — Intro
+ *
+ * Three-step topic frame. Sets up the talk before any numbers land.
+ *   0 · opening question + blinking caret
+ *   1 · "quiet leak" — drip animation of token increments
+ *   2 · transition with dashed-cyan rule
+ *
+ * Class prefix: .in-
+ * ───────────────────────────────────────────────────────────────────── */
+
+.in-scene { color: var(--text); }
+.in-em { color: var(--accent); }
+
+/* ─── step 0 — opening question ─── */
+.in-step0 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.in-h0 {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 168px;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0;
+  max-width: 18ch;
+  opacity: 0;
+  animation: in-fade-up 900ms cubic-bezier(0.19, 1, 0.22, 1) 100ms forwards;
+}
+.in-q-mark {
+  display: inline-block;
+  color: var(--accent);
+  margin-left: 0.08em;
+}
+.in-caret {
+  display: inline-block;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  margin-left: 0.05em;
+  animation: in-blink 1.05s steps(1, end) infinite;
+}
+
+/* ─── step 1 — quiet leak ─── */
+.in-step1 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.in-h1 {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 168px;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0;
+  max-width: 14ch;
+  opacity: 0;
+  animation: in-fade-up 900ms cubic-bezier(0.19, 1, 0.22, 1) 100ms forwards;
+}
+.in-drip {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding-top: 40px;
+  gap: 16px;
+  pointer-events: none;
+}
+.in-drop {
+  font-family: var(--font-mono);
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  opacity: 0;
+  animation: in-drip-fall 2400ms cubic-bezier(0.55, 0, 0.85, 0.5) forwards infinite;
+}
+@keyframes in-drip-fall {
+  0%   { opacity: 0; transform: translateY(-30px); }
+  20%  { opacity: 0.9; }
+  80%  { opacity: 0.4; transform: translateY(180px); }
+  100% { opacity: 0; transform: translateY(220px); }
+}
+
+/* ─── step 2 — transition ─── */
+.in-step2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 56px;
+}
+.in-h2 {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 192px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0;
+  opacity: 0;
+  animation: in-fade-up 900ms cubic-bezier(0.19, 1, 0.22, 1) 100ms forwards;
+}
+.in-rule {
+  display: block;
+  width: 360px;
+  height: 2px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--accent) 0,
+      var(--accent) 14px,
+      transparent 14px,
+      transparent 28px
+    );
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: in-rule-grow 1100ms cubic-bezier(0.86, 0, 0.07, 1) 900ms forwards;
+}
+.in-foot {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  opacity: 0;
+  animation: in-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) 1700ms forwards;
+}
+
+/* ── shared keyframes ── */
+@keyframes in-fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes in-rule-grow {
+  to { transform: scaleX(1); }
+}
+@keyframes in-blink {
+  50% { opacity: 0; }
+}

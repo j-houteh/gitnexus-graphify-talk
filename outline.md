@@ -1,0 +1,297 @@
+# Video Outline
+
+> **Theme**: `blueprint` — deep-navy + cyan, IBM Plex Mono. Engineering blueprint / schematic vibe.
+> **Total length**: ~8 min (English narration ~1100 words ÷ ~130 wpm; or readable on-screen captions at equivalent pacing).
+> **Chapters**: 10 chapters / 48 steps total.
+> **Audio mode**: Script-only, voice in post. Phase 3 (audio synthesis) is **skipped**. `narrations.ts` still drives step count and on-screen text per the skill contract.
+> **Assets**: Animated diagrams only — no raster screenshots. All visuals are CSS / SVG / Canvas built from primitives.
+
+---
+
+## 1. intro — Intro (3 steps · ~25s)
+
+**Info pool** (chapter agent uses these as on-screen detail / framing):
+- Framing: open with a direct engineer question, set the talk's territory before any numbers — chapter framing decision
+- Phrase: "your token bill has a quiet leak" — for typographic emphasis
+- Visual cue: token-meter / drip motif foreshadowing chapter 2 — chapter-local primitive
+- Transition: hand off to ch 2 with a "here's how to cut it" pointer — chapter framing decision
+
+**Development plan**:
+
+- step 1 (~8s) — Opening question line: "Using Claude Code for serious work?" with a blinking cyan caret.
+- step 2 (~10s) — "Your token bill has a quiet leak." Right-hand-side cyan drip animation (small mono `+N` increments falling).
+- step 3 (~7s) — "Here's how to cut it." Dashed-cyan rule grows beneath. Mono pointer "Next — what's actually happening."
+
+Script excerpt:
+> "Using Claude Code for serious work? Your token bill has a quiet leak. Here's how to cut it."
+
+---
+
+## 2. hidden-tax — The hidden tax (5 steps · ~45s)
+
+**Info pool**:
+- Number: `56,439 tokens` for a single agent session — source article B (sidharth)
+- Number: `29 tool calls` for one end-to-end query — source article B Test 3
+- Number: `15 file reads` per single query — source article B Test 3
+- Quote: "That's not the model thinking. That's the model *looking*." — author phrasing, free to reuse
+- Contrast pair: "thinking cost" vs "looking cost" — for stage typography hierarchy
+- Visual cue: token-meter ticking-up motif — will recur in chapter 9 for the payoff
+
+**Development plan**:
+
+- step 1 (~9s) — Cold open. Single line: "One question to your agent." Stage is mostly empty, navy field with one cyan blinking caret.
+- step 2 (~9s) — Counter row reveals: `29 TOOL CALLS · 15 FILE READS`, mono digits.
+- step 3 (~10s) — Hero number animates up: `56,439 tokens`. Single biggest number on stage so far.
+- step 4 (~9s) — Reframing line replaces counters: "Not thinking. Looking."
+- step 5 (~8s) — Quiet outro line: "Every session pays again." Transitions toward chapter 3.
+
+Script excerpt:
+> "Twenty-nine tool calls. Fifteen file reads. Fifty-six thousand tokens — for one answer. That's not the model thinking. That's the model *looking*."
+
+---
+
+## 3. over-read-loop — Why agents over-read (4 steps · ~40s)
+
+**Info pool**:
+- Pattern name: "grep → read → grep → read" loop — source article B (sidharth)
+- Cause: each file read costs context, each grep misses cross-file links — source article B
+- Metaphor: "reading the book to find the table of contents" — author phrasing, free to reuse
+- Visual motif: a simplified file tree (8–12 nodes) with a roving pointer — chapter-local primitive
+- Stat anchor: `18 grep operations` from the same benchmark trio — source article B (held in reserve; ch 9 has the full reveal)
+
+**Development plan**:
+
+- step 1 (~10s) — File tree animates in, dimmed. A single highlighted pointer hops: grep → read → grep → read.
+- step 2 (~10s) — Two annotation lines drift in beside the tree: "each read = context burned" / "each grep = links missed".
+- step 3 (~10s) — Tree fades; replaced by one focal line: "Agents can't see structure. Only text."
+- step 4 (~10s) — Punch line on hero scale: "Reading the book to find the table of contents."
+
+Script excerpt:
+> "Grep. Read. Grep. Read. Each read costs context, each grep misses cross-file links. It's reading the book to find the table of contents."
+
+---
+
+## 4. hinge — The hinge (2 steps · ~30s)
+
+**Info pool**:
+- Hero quote (verbatim, do not paraphrase): "Structural knowledge about your codebase is a pre-computable asset, not a runtime expense." — source article B
+- Visual frame: full-stage typography moment — minimal animation, holds for read time
+- Pacing rule: this is the talk's pivot — no benchmarks, no diagrams, just the line
+
+**Development plan**:
+
+- step 1 (~12s) — Single line on stage: "Here's the flip." Empty around it. Subtle horizon-rule animates in below.
+- step 2 (~18s) — Hero quote unfurls in IBM Plex Mono. Long hold — this is the only step in the talk that's meant to *land* rather than progress.
+
+Script excerpt:
+> "Structural knowledge about your codebase is a pre-computable asset, not a runtime expense."
+
+---
+
+## 5. gitnexus — GitNexus: the structural graph (8 steps · ~80s)
+
+**Info pool**:
+- Tagline: "AST → graph → MCP" — composite of source articles A + B
+- Number: `5 repos analyzed in 29 seconds` — source article B
+- Number: `11,237 nodes` indexed — source article B
+- Number: `23,356 edges` indexed — source article B
+- Number: `659 execution flows` traced — source article B
+- Capability list: symbols, call chains, blast radius, execution flows — source article B (canonical phrasing)
+- Delivery surface: MCP server — native Claude Code integration, no shell overhead — source article B
+- Question prototype: "what changes if I touch this?" — chapter framing
+- Visual motif: nodes-and-edges graph build animation, cyan-on-navy — chapter-local primitive
+
+**Development plan**:
+
+- step 1 (~10s) — Title state. Tagline: "GitNexus — the structural graph". Subtitle: "AST → graph → MCP".
+- step 2 (~10s) — Animated parse: source-code glyph collapses into a graph node. First nodes appear.
+- step 3 (~10s) — Numbers cascade. First metric row: `5 repos · 29s`.
+- step 4 (~10s) — Second metric row: `11,237 nodes · 23,356 edges`. Counter animates from 0.
+- step 5 (~10s) — Third metric row: `659 execution flows traced`. Edge-paths animate through the graph.
+- step 6 (~10s) — Question prompt appears beside the graph: "what changes if I touch this?"
+- step 7 (~10s) — Path traversal highlights the blast radius. Answer materializes as a subgraph slice.
+- step 8 (~10s) — Closing line: "Ships as an MCP server. Claude calls it natively."
+
+Script excerpt:
+> "Five repos. Twenty-nine seconds. Eleven thousand nodes. Twenty-three thousand edges. Six hundred and fifty-nine execution flows."
+
+---
+
+## 6. graphify — Graphify: the semantic graph (8 steps · ~80s)
+
+**Info pool**:
+- Distinguishing claim: "reads more than code" — composite framing
+- Input modalities: code, docs, images, research papers, whiteboard photos — source article A
+- Pipeline (verbatim): `detect → extract → build_graph → cluster → analyze` — source article A
+- Edge labels (verbatim, all three): **EXTRACTED**, **INFERRED**, **AMBIGUOUS** — source article A
+- Capability framing: cross-layer relationships, semantic groupings — source article B
+- Question prototype: "why does this exist?" vs GitNexus's "what calls this" — composite
+- Output artifact: persistent `graph.json` — source article A
+- Visual motif: multi-source nodes (different glyph per modality) merging into one graph — chapter-local primitive
+
+**Development plan**:
+
+- step 1 (~10s) — Title state. Tagline: "Graphify — the semantic graph". Subtitle: "reads more than code".
+- step 2 (~10s) — Modality icons fan in one by one: code, doc, image, PDF, whiteboard photo.
+- step 3 (~10s) — Pipeline stages animate left-to-right: detect → extract → build_graph → cluster → analyze.
+- step 4 (~10s) — Honesty layer reveal: three edge styles render side-by-side.
+- step 5 (~10s) — `EXTRACTED` edge highlighted with its source provenance.
+- step 6 (~10s) — `INFERRED` edge — model-derived, dashed style, with a tiny confidence ribbon.
+- step 7 (~10s) — `AMBIGUOUS` edge — flagged with a marker, "audit me" annotation.
+- step 8 (~10s) — Contrast frame closes the chapter: GitNexus = *what calls this* | Graphify = *why does this exist*.
+
+Script excerpt:
+> "Code. Docs. Images. Research papers. Whiteboard photos. Every edge labeled EXTRACTED, INFERRED, or AMBIGUOUS."
+
+---
+
+## 7. dual-engine — The dual engine (5 steps · ~50s)
+
+**Info pool**:
+- Routing split: `~70%` GitNexus / `~25%` Graphify / `~5%` grep — source article B
+- Authority phrasing: "Graphify = `ANALYZE` statistics; GitNexus = query planner" — source article B (verbatim where possible)
+- Composite claim: "Neither alone handles both technical structure and non-code context." — source article B
+- Visual motif: split-stage with two panels resolving into one query path — chapter-local primitive
+- Cross-reference: pulls back the graphs from ch 5 & ch 6 as static thumbnails
+
+**Development plan**:
+
+- step 1 (~10s) — Opening line: "You don't pick one. You route to the right one."
+- step 2 (~10s) — Percentage bar animates: GitNexus 70 — Graphify 25 — grep 5.
+- step 3 (~10s) — Left panel: GitNexus thumbnail + "code structure — call chains, blast radius".
+- step 4 (~10s) — Right panel: Graphify thumbnail + "cross-layer — why does this exist".
+- step 5 (~10s) — Both panels collapse into one routing arrow. Closing analogy line lands.
+
+Script excerpt:
+> "Graphify is `ANALYZE` statistics. GitNexus is the query planner."
+
+---
+
+## 8. setup — Setup (2 steps · ~25s)
+
+**Info pool**:
+- Decision: deliberately platform-neutral. No OS-specific install commands (those belong in the tool docs, not the video) — chapter framing decision
+- Claim: both tools ship as MCP servers — source article A
+- MCP-vs-CLI saving: `~200 tokens saved per call` — source article B
+- Mechanism: native MCP eliminates shell roundtrip + JSON re-parse — source article B
+- Dev-loop framing: agent asks → MCP returns a graph slice → no file reads — composite
+- Visual motif: two MCP-ready badges + a ledger + a 3-node dev-loop diagram — chapter-local primitives
+
+**Development plan**:
+
+- step 1 (~10s) — "Both tools ship as MCP servers." Two MCP-ready badges (GitNexus, Graphify) animate in. Mono foot: "A few commands per their docs — and they're wired into Claude."
+- step 2 (~15s) — MCP-vs-CLI ledger: `CLI ~200 tokens / call` strikes through, `MCP 0 tokens / call` lands accent. Then a 3-node dev loop appears: agent → graph → answer.
+
+Script excerpt:
+> "Both tools ship as MCP servers. MCP over CLI saves about two hundred tokens per call. The graph returns a slice. No file reads."
+
+---
+
+## 9. receipts — The receipts (8 steps · ~90s)
+
+**Info pool** (this is the load-bearing chapter — numbers verbatim):
+- Test 1 — encryption handling: tool calls `14 → 2`; file reads `11 → 0`; deps found `30 → 43` — source article B
+- Test 2 — blast radius (DocumentsService): tool calls `~15 → 2`; execution flows traced `0 → 9` (with risk ranking) — source article B
+- Test 3 — end-to-end document editor flow: tool calls `29 → 3`; file reads `15 → 0` — source article B
+- Aggregate row 1: tool calls `58 → 7` (**88% reduction**) — source article B
+- Aggregate row 2: grep operations `18 → 0` (**100% elimination**) — source article B
+- Aggregate row 3: file reads `35 → 0` (**100% elimination**) — source article B
+- Hero token number: per-query retrieval `~13,750 → ~3,500 tokens` (**74% saved**) — source article B
+- Test framing: "three real queries, same codebase, normal Claude vs Claude with the graphs" — composite framing
+- Visual motif: benchmark table where rows animate in left → right, columns "Normal" vs "MCP" build separately
+
+**Development plan**:
+
+- step 1 (~10s) — Section title: "Three queries. Same codebase. Real numbers."
+- step 2 (~12s) — Test 1 row builds. Tool calls: `14 → 2`. File reads: `11 → 0`. Sub-annotation: "and found *more* deps (43 vs 30)".
+- step 3 (~12s) — Test 2 row builds. Tool calls: `~15 → 2`. Execution flows: `0 → 9` (with "ranked by risk" overlay).
+- step 4 (~12s) — Test 3 row builds. Tool calls: `29 → 3`. File reads: `15 → 0`.
+- step 5 (~11s) — Aggregate row 1 lights up: `58 → 7` tool calls. **88%** stamp.
+- step 6 (~11s) — Aggregate row 2: grep ops `18 → 0`. **100%** stamp.
+- step 7 (~11s) — Aggregate row 3: file reads `35 → 0`. **100%** stamp.
+- step 8 (~11s) — Hero reveal: token counter from ch 2 reappears. `13,750` → `3,500`. **74% saved per query.**
+
+Script excerpt:
+> "Fifty-eight tool calls collapsed to seven. Eighteen grep operations — gone. Thirteen thousand seven hundred and fifty tokens — down to three thousand five hundred."
+
+---
+
+## 10. closing — Closing (3 steps · ~20s)
+
+**Info pool**:
+- Decision: deliberately platform-neutral. Drop the command-recap; lean on slogans — chapter framing decision
+- Slogan 1: "Index once. Reuse forever." — composite framing
+- Slogan 2: "Pay tokens for thinking. Stop paying them for finding." — composite framing
+- Outro: "Watch the meter drop." — closing tagline
+- Visual motif: clean type-only outro. Single accent line, two dashed rules.
+
+**Development plan**:
+
+- step 1 (~7s) — Hero pair line: "Index once." → "Reuse forever." with rule extending beneath.
+- step 2 (~8s) — Two stacked lines: "Pay tokens for thinking." / "Stop paying them for finding." (strikethrough on "finding").
+- step 3 (~5s) — Closing frame: dashed cyan rule, single line "Watch the meter drop.", second dashed rule. End.
+
+Script excerpt:
+> "Index once. Reuse forever. Pay tokens for thinking, not for finding."
+
+---
+
+## Assets
+
+> **Decision (locked at Checkpoint Plan)**: animated diagrams only. No raster screenshots, no logos, no photos.
+
+### 1. intro
+- ⚠️ Cyan blinking caret animation (already exists from ch 2 — reuse)
+- ⚠️ Drip primitive: small mono `+N` increments falling down right edge — chapter-local
+
+### 2. hidden-tax
+- ✓ Token-meter primitive (CSS-animated counter component) — must reach `56,439` cleanly
+- ✓ Tool-call counter primitive (`29 TOOL CALLS · 15 FILE READS`) — same component, two variants
+- ⚠️ Cold-open cyan caret animation — chapter agent designs in CHAPTER-CRAFT phase
+
+### 3. over-read-loop
+- ⚠️ File-tree primitive (SVG, ~10 nodes) with a roving pointer — chapter-local
+- ⚠️ Annotation-callout pattern (consistent with Blueprint theme) — reused across chapters
+
+### 4. hinge
+- ✓ No assets beyond typography. Pure theme tokens.
+
+### 5. gitnexus
+- ⚠️ Nodes-and-edges graph primitive (SVG, scalable to 50+ nodes for visual density)
+- ⚠️ Edge-traversal animation for the blast-radius reveal
+- ⚠️ Number-counter primitive (already exists in ch 2 — reuse)
+
+### 6. graphify
+- ⚠️ Modality icons set: code, doc, image, PDF, whiteboard (line-art, single-stroke, Blueprint cyan)
+- ⚠️ Three edge-style variants: solid (EXTRACTED), dashed (INFERRED), dotted-w-marker (AMBIGUOUS)
+- ⚠️ Pipeline-stages strip primitive (5 stages, animate left-to-right)
+
+### 7. dual-engine
+- ⚠️ Percentage-bar primitive (segmented, 70/25/5)
+- ⚠️ Static thumbnails of ch 5 + ch 6 graph states (extracted from those chapters)
+
+### 8. setup
+- ⚠️ MCP-ready badge primitive (dot + name + tag) — chapter-local
+- ⚠️ Ledger + dev-loop diagram primitives — chapter-local
+
+### 9. receipts
+- ⚠️ Benchmark-table primitive (sortable column reveal, two-column "Normal" vs "MCP")
+- ⚠️ Aggregate "stamp" primitive (e.g. circular `88%` / `100%` overlay)
+- ⚠️ Reuse of ch 2 token-meter for the final hero reveal
+
+### 10. closing
+- ✓ No assets beyond typography. Pure theme tokens.
+
+---
+
+## Self-check (passes)
+
+- [x] Every step is one screen-content sentence; no animation/timing/CSS specified
+- [x] No step has a literal ms / s value other than the `(~Ts)` voiceover estimate
+- [x] Every chapter has an info pool with ≥3 entries, each with a source tag
+- [x] Per-step `(~Ts)` accumulates to ≈ 485s (sum: 25+45+40+30+80+80+50+25+90+20 = 485s) — matches header
+- [x] All chapters are 2–8 steps and 20–90s — within the per-chapter rules
+- [x] Asset list grouped by chapter with ✓ / ⚠️ status
+- [x] No emoji, no marketing/CTA padding, no AI-tell phrasing in body text
+- [x] Setup (ch 8) deliberately platform-neutral — no OS-specific commands
+- [x] Closing (ch 10) deliberately platform-neutral — no command recap

@@ -1,0 +1,224 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Chapter 08 — Setup (was wiring)
+ *
+ * Two-step platform-neutral setup chapter. No OS-specific install
+ * commands. Step 0 reassures with MCP-ready badges; step 1 lands the
+ * MCP-vs-CLI insight together with the dev-loop diagram.
+ *
+ * Class prefix: .st-
+ * ───────────────────────────────────────────────────────────────────── */
+
+.st-scene { color: var(--text); }
+.st-em { color: var(--accent); }
+.st-mono-label {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+/* ─── step 0 — soft pointer ─── */
+.st-step0 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 64px;
+}
+.st-h0 {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 168px;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin: 0;
+  opacity: 0;
+  animation: st-fade-up 800ms cubic-bezier(0.19, 1, 0.22, 1) 100ms forwards;
+}
+.st-badges {
+  display: flex;
+  gap: 32px;
+}
+.st-badge {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 40px;
+  background: var(--surface-2);
+  border: 2px solid var(--accent);
+  opacity: 0;
+  transform: translateY(28px);
+  animation: st-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) 700ms forwards;
+}
+.st-badge-2 { animation-delay: 1000ms; }
+.st-badge-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+.st-badge-name {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 44px;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.st-badge-tag {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+.st-foot {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.06em;
+  color: var(--text-2);
+  padding-top: 20px;
+  border-top: 2px dashed var(--rule);
+  opacity: 0;
+  animation: st-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) 1400ms forwards;
+}
+
+/* ─── step 1 — ledger + dev loop ─── */
+.st-step1 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+}
+.st-ledger {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 40px 56px;
+  background: var(--surface-2);
+  border: 2px solid var(--accent);
+  opacity: 0;
+  animation: st-fade-up 800ms cubic-bezier(0.19, 1, 0.22, 1) 100ms forwards;
+}
+.st-ledger-row {
+  display: grid;
+  grid-template-columns: 280px 200px 1fr;
+  align-items: baseline;
+  gap: 32px;
+}
+.st-ledger-key {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.st-ledger-old {
+  font-family: var(--font-mono);
+  font-size: 96px;
+  font-weight: 500;
+  color: var(--text-mute);
+  font-variant-numeric: tabular-nums;
+  position: relative;
+  line-height: 1;
+}
+.st-ledger-old::after {
+  content: "";
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  top: 56%;
+  height: 6px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: st-strike 600ms cubic-bezier(0.86, 0, 0.07, 1) 1100ms forwards;
+}
+.st-ledger-new {
+  font-family: var(--font-mono);
+  font-size: 96px;
+  font-weight: 500;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.st-ledger-unit {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+.st-ledger-arrow {
+  font-family: var(--font-mono);
+  font-size: 44px;
+  color: var(--accent);
+  text-align: center;
+  opacity: 0;
+  animation: st-fade-up 600ms cubic-bezier(0.19, 1, 0.22, 1) 1500ms forwards;
+}
+.st-ledger-row-new {
+  opacity: 0;
+  animation: st-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) 1900ms forwards;
+}
+
+.st-loop {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr 60px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+.st-loop-node {
+  padding: 32px 28px;
+  background: var(--surface-2);
+  border: 2px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.92);
+}
+.st-loop-node-1 { animation: st-node-in 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 2600ms forwards; }
+.st-loop-node-2 { animation: st-node-in 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 3000ms forwards; }
+.st-loop-node-3 { animation: st-node-in 600ms cubic-bezier(0.34, 1.56, 0.64, 1) 3400ms forwards; }
+@keyframes st-node-in {
+  to { opacity: 1; transform: scale(1); }
+}
+.st-loop-label {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.st-loop-act {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.st-loop-arrow {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-size: 52px;
+  color: var(--accent);
+  text-align: center;
+  opacity: 0;
+}
+.st-loop-arrow-1 { animation: st-fade-up 400ms cubic-bezier(0.19, 1, 0.22, 1) 2850ms forwards; }
+.st-loop-arrow-2 { animation: st-fade-up 400ms cubic-bezier(0.19, 1, 0.22, 1) 3250ms forwards; }
+
+/* ── shared keyframes ── */
+@keyframes st-fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes st-strike {
+  to { transform: scaleX(1); }
+}
