@@ -93,7 +93,7 @@ When ready: click → Speaker A opens ch 2 with **"Using Claude Code for serious
 ### Live examples to share
 
 - "Quick show of hands — who's used an AI coding agent this week? Keep your hand up if it ever made you wait while it grep'd around for a function." *(if interactive)*
-- Pull from your own work: "I asked Claude to trace a single execution flow in our monorepo last week. Sixty thousand tokens. For one question."
+- Pull from your own work: "I asked Claude to trace a function call chain in our codebase last week. Sixty thousand tokens. For one question."
 
 ### Anticipated Q&A
 
@@ -170,7 +170,7 @@ A continues into ch 4: **"Why does this happen every time?"** → click
 
 **Step 1 — "READ → context burned. GREP → links missed."**
 - "Context burned" = the model's working memory shrinks; conversation quality degrades.
-- "Links missed" = grep is text-pattern matching. Decorators, dynamic dispatch, framework conventions (CQRS handlers, GraphQL resolvers, NestJS providers) don't show up.
+- "Links missed" = grep is text-pattern matching. Decorators, dynamic dispatch, framework registrations don't show up — anything wired up by the framework rather than called by name.
 
 **Step 2 — "So it reads more, just to be sure."**
 - This is the spiral. The frantic pointer animation here is intentional.
@@ -182,7 +182,7 @@ A continues into ch 4: **"Why does this happen every time?"** → click
 
 ### Live examples to share
 
-- "Pretend you're Claude in our monorepo. You want to know what calls `ExceptionAssignmentService.assign`. You grep — 30+ hits. You read 5 to figure out which are real callers. You miss the CQRS event handler that registers via decorator, not direct call. You grep again."
+- "Pretend you're Claude in any real codebase. You want to know what calls a function — say, `processOrder`. You grep — 30-plus hits. You read 5 to figure out which are real callers. You miss the one that's wired up through a decorator and never called by name. You grep again."
 - "This is also why agents sometimes confidently confabulate call sites — they've grep'd, picked one, and run with it without checking."
 
 ### Anticipated Q&A
@@ -264,8 +264,8 @@ This is the speaker handoff. Practice it — eye contact between speakers, half-
 - With a graph: deterministic.
 
 **Step 6 — "3 hops. Not a grep. A lookup."**
-- The blast-radius example — concrete moment from our codebase: in a real session, the agent asked "show me the AP exception assignment flow" and went straight from natural language to `ExceptionCreatedAutoAssignHandler` — a CQRS event handler registered via decorator. **Zero greps. Four reads. Seven tool calls total.** Grep would have missed it entirely; you'd need to know event-handler naming conventions.
-- Drop this story aloud during step 6 — it's the most credible single anecdote in the talk.
+- The blast-radius example — concrete moment from our codebase: in a real session, the agent asked a natural-language question about a feature's flow and went **straight to the right function** without grep'ing first. **Zero greps. Four reads. Seven tool calls total.** Grep would have missed it entirely because the function gets registered through a decorator, not called by name.
+- Drop this story aloud during step 6 — it's the most credible single anecdote in the talk. Keep it generic; the *shape* (zero greps, function reached via framework registration) is what matters.
 
 **Step 7 — "Ships as an MCP server. Claude calls it natively."**
 - MCP = Model Context Protocol (Anthropic's standard).
@@ -274,15 +274,15 @@ This is the speaker handoff. Practice it — eye contact between speakers, half-
 
 ### Live examples to share
 
-- "For context: our monorepo has 1,626 files. GitNexus indexed it once into ~23K nodes and ~48K edges. After that, any code question is a graph lookup, not a file scan."
+- "For context: our codebase has 1,626 files. GitNexus indexed it once into ~23K nodes and ~48K edges. After that, any code question is a graph lookup, not a file scan."
 - "If you've used VS Code's 'Find All References' — same idea, but exposed to your AI agent over MCP."
-- **The AP exception flow story** (above) — single most useful anecdote, drop it on step 6.
+- **The 'zero greps' story** (above) — single most useful anecdote. Drop it on step 6 in your own words; keep it generic ("a real session", "a function registered via decorator").
 
 ### Anticipated Q&A
 
 - *"What languages does it support?"* — JavaScript / TypeScript / Python / Go primarily. Check the docs for the current list.
 - *"Does it work with monorepos?"* — Yes — that's how we use it. Handles cross-package call chains.
-- *"What about dynamic dispatch / decorators?"* — This is where it actually shines vs grep — decorator-registered handlers (CQRS, NestJS providers, GraphQL resolvers) get picked up because they're AST-level constructs, not text patterns.
+- *"What about dynamic dispatch / decorators?"* — This is where it actually shines vs grep — decorator-registered handlers (any framework hook — DI, events, routes, listeners) get picked up because they're AST-level constructs, not text patterns.
 - *"How fresh is the graph?"* — Incremental re-index on file changes. Honest caveat: our index goes stale if you skip the post-checkout hook. Worth wiring it up via `.githooks/post-checkout`.
 - *"Is the graph stored locally?"* — Yes. Runs as a local MCP server. Nothing leaves your machine.
 
@@ -300,7 +300,7 @@ B continues into ch 7: **"But code isn't your whole context."**
 
 ### Honest framing (important — read before the talk)
 
-We have Graphify **installed** but haven't run it deeply against our docs (`AR_DOMAIN_PRIMER.md`, SOW templates, the matching/reconciliation prose). The chapter sells what it's built to do — and the *capability* is real and well-documented — but our token savings from Graphify are qualitative ("felt faster, felt more focused") not measured.
+We have Graphify **installed** but haven't run it deeply against our team's docs yet. The chapter sells what it's built to do — and the *capability* is real and well-documented — but our token savings from Graphify are qualitative ("felt faster, felt more focused") not measured.
 
 **Don't claim Graphify-specific savings numbers.** If pressed: "We've felt it reduce noise when the agent picks up context from the docs folder, but we haven't run a clean A/B yet. The capability is what we're showing today; the receipts in chapter 10 are GitNexus measurements." Honest answer earns more trust than fudged numbers.
 
@@ -331,7 +331,7 @@ We have Graphify **installed** but haven't run it deeply against our docs (`AR_D
 
 ### Live examples to share
 
-- "Think about how much of our engineering context is *not* in the code. Architecture docs, SOWs, Slack threads, whiteboard photos. Graphify reads all of it and links them."
+- "Think about how much of your engineering context is *not* in the code. Architecture docs, design notes, Slack threads, whiteboard photos. Graphify reads all of it and links them."
 - "When I show the EXTRACTED/INFERRED/AMBIGUOUS slide to skeptics, this is the slide that convinces them. Most AI tools say 'I think X.' Graphify says 'I extracted X here, inferred Y based on context, and I'm not sure about Z — go look.'"
 - **If asked about your team's usage:** be honest. "We've got it installed. We haven't yet run it deeply against our docs folder. That's on our roadmap — but the capability is what we want you to know about today."
 
@@ -432,26 +432,26 @@ This is the second speaker transition. Both speakers now share the stage for ch 
 
 ### Honest framing
 
-The Test 1 numbers (exception assignment flow) come from a real session in our monorepo — 7 tool calls / 4 reads with graphs enabled. Tests 2 and 3 are realistic for our codebase but didn't run a clean A/B for each; they're shaped from what we've observed broadly. If pressed in Q&A, say so — "Test 1 is from a logged session; Tests 2 and 3 are representative of what we see in similar queries, not directly measured A/B." Honest beats flashy.
+The Test 1 numbers (the function-caller query) come from a real session in our codebase — 7 tool calls / 4 reads with graphs enabled. Tests 2 and 3 are realistic for our codebase but didn't run a clean A/B for each; they're shaped from what we've observed broadly. If pressed in Q&A, say so — "Test 1 is from a logged session; Tests 2 and 3 are representative of what we see in similar queries, not directly measured A/B." Honest beats flashy.
 
 ### Step notes
 
 **Step 0 — "Three queries. Same codebase. Real numbers."**
 - **A** reads it. B nods.
-- Set frame: same monorepo, same model, same task. Only difference is whether the graphs are wired in.
+- Set frame: same codebase, same model, same task. Only difference is whether the graphs are wired in.
 
-**Step 1 — Test 1: exception assignment flow** *(real session)*
-- **A:** "Test one. Exception assignment flow. Eighteen tool calls became seven."
-- **B:** "Eleven file reads became four. And it found the CQRS event handler grep would have missed."
-- *Talking point:* "`ExceptionCreatedAutoAssignHandler` — registered via decorator, not direct call. Pure-text grep would never have surfaced it."
+**Step 1 — Test 1: "find every caller of this function"** *(real session)*
+- **A:** "Test one. Find every caller of this function. Eighteen tool calls became seven."
+- **B:** "Eleven file reads became four. And it found a caller grep would have missed."
+- *Talking point:* "The hidden caller was a function registered through a framework decorator — never called by name in the source. Pure-text grep would never have surfaced it."
 
-**Step 2 — Test 2: invoice → payable matching**
-- **B:** "Test two. Invoice to payable matching. Twenty-two calls became five."
-- **A** punctuates: "Fourteen reads became three. Twelve services, four events — traced end-to-end."
-- *Talking point:* "The agent walked the whole chain — controller, service, event handler, projection — without us having to spell out the path."
+**Step 2 — Test 2: "trace this request end-to-end"**
+- **B:** "Test two. Trace this request end-to-end. Twenty-two calls became five."
+- **A** punctuates: "Fourteen reads became three. The full chain — request to response — in one query."
+- *Talking point:* "The agent walked the whole chain — entry point, services, handlers, persistence — without us having to spell out the path."
 
-**Step 3 — Test 3: schema impact on InvoiceLineItem**
-- **A:** "Test three. Schema impact on InvoiceLineItem. Fifteen calls became three."
+**Step 3 — Test 3: "what depends on this data model"**
+- **A:** "Test three. What depends on this data model. Fifteen calls became three."
 - **B:** "Ten reads became zero. Eleven dependencies surfaced, ranked by risk."
 - *Talking point:* "Zero file reads. The graph already knew. Pre-computed, remember."
 
@@ -476,7 +476,7 @@ The Test 1 numbers (exception assignment flow) come from a real session in our m
 
 ### Live examples to share
 
-- "These aren't synthetic tests. We pulled them from session logs in our own monorepo last week."
+- "These aren't synthetic tests. We pulled them from session logs in our own codebase last week."
 - "Test 1 is the cleanest single data point — a real session where the agent did the thing. Tests 2 and 3 are representative of what we see in similar queries."
 - "Sixty thousand to eighteen thousand is per session. Multiply by sessions per day per engineer — that's the real budget number."
 
@@ -617,7 +617,7 @@ If asked who this is for:
 
 - [ ] Both speakers have read this doc end-to-end
 - [ ] Hinge transition (ch 5 → ch 6) rehearsed — that pause is load-bearing
-- [ ] Ch 6 step 6: rehearsed how to drop the AP exception flow story (CQRS event handler, 0 greps, 7 tool calls total)
+- [ ] Ch 6 step 6: rehearsed how to drop the "zero greps" story — a real session where the agent found a function registered via decorator without grep'ing first (7 tool calls total, 0 greps, 4 reads)
 - [ ] Ch 7: agreed on how to answer the "have you actually run Graphify on your docs?" question honestly
 - [ ] Ch 10 alternation rehearsed — practice who reads which line
 - [ ] Ch 10: agreed on how to answer "are Tests 2 & 3 logged sessions too?" — Test 1 is real session, 2-3 are representative

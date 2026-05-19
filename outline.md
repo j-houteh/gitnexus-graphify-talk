@@ -3,7 +3,7 @@
 > **Theme**: `blueprint` — deep-navy + cyan, IBM Plex Mono. Engineering blueprint / schematic vibe.
 > **Total length**: ~8.5 min (English narration ~1100 words ÷ ~130 wpm; or readable on-screen captions at equivalent pacing).
 > **Chapters**: 12 chapters / 51 steps total.
-> **Project context**: numbers are from an AP/AR automation monorepo we've been working in (~1,600 files, NestJS + Next.js, GraphQL, Postgres). Indexed with GitNexus; Graphify installed but only used qualitatively.
+> **Project context**: numbers are from our own codebase (~1,600 files). Indexed with GitNexus; Graphify installed but only used qualitatively.
 > **Audio mode**: Script-only, voice in post. Phase 3 (audio synthesis) is **skipped**. `narrations.ts` still drives step count and on-screen text per the skill contract.
 > **Assets**: Animated diagrams only — no raster screenshots. All visuals are CSS / SVG / Canvas built from primitives.
 
@@ -119,7 +119,7 @@ Script excerpt:
 - Delivery surface: MCP server — native Claude Code integration, no shell overhead
 - Question prototype: "what changes if I touch this?" — chapter framing
 - Visual motif: nodes-and-edges graph build animation, cyan-on-navy — chapter-local primitive
-- Concrete blast-radius example for ch 6 / step 6 / step 7: AP exception assignment flow — a real session where the agent went from natural-language query to `ExceptionCreatedAutoAssignHandler` (a CQRS event handler) in 7 tool calls / 0 greps — observed in our own session log
+- Concrete blast-radius example for ch 6 / step 6 / step 7: real session where the agent went from a natural-language query straight to the right function in 7 tool calls / 0 greps — observed in our own session log
 
 **Development plan**:
 
@@ -147,7 +147,7 @@ Script excerpt:
 - Capability framing: cross-layer relationships, semantic groupings — what Graphify is built for
 - Question prototype: "why does this exist?" vs GitNexus's "what calls this" — composite framing
 - Output artifact: persistent `graph.json` — Graphify's output
-- **Honest qualitative note** (for speaker notes, not slide): we have Graphify installed but have not yet run it on our docs (AR_DOMAIN_PRIMER.md, SOW templates, etc.). The chapter sells the *capability* — speaker should be honest in Q&A that the team's adoption is still ahead of us. Token savings we've felt from Graphify are observational, not measured.
+- **Honest qualitative note** (for speaker notes, not slide): we have Graphify installed but have not yet run it deeply against our team's docs. The chapter sells the *capability* — speaker should be honest in Q&A that the team's adoption is still ahead of us. Token savings we've felt from Graphify are observational, not measured.
 - Visual motif: multi-source nodes (different glyph per modality) merging into one graph — chapter-local primitive
 
 **Development plan**:
@@ -209,23 +209,23 @@ Script excerpt:
 ## 10. receipts — The receipts (8 steps · ~90s)
 
 **Info pool** (the load-bearing chapter — numbers from our monorepo testing):
-- Test 1 — exception assignment flow: tool calls `18 → 7`; file reads `11 → 4`. Found `ExceptionCreatedAutoAssignHandler` (a CQRS event handler) that grep would miss — observed in real session
-- Test 2 — invoice → payable matching: tool calls `22 → 5`; file reads `14 → 3`. Traced 12 services + 4 events end-to-end
-- Test 3 — schema impact: InvoiceLineItem: tool calls `15 → 3`; file reads `10 → 0`. 11 dependencies surfaced, ranked by risk
+- Test 1 — "find every caller of this function": tool calls `18 → 7`; file reads `11 → 4`. Found a caller grep would have missed (registered via decorator) — observed in real session
+- Test 2 — "trace this request end-to-end": tool calls `22 → 5`; file reads `14 → 3`. Full chain from request to response in one query
+- Test 3 — "what depends on this data model": tool calls `15 → 3`; file reads `10 → 0`. 11 dependencies surfaced, ranked by risk
 - Aggregate row 1: tool calls `55 → 15` (**73% reduction**)
 - Aggregate row 2: grep operations `18 → 0` (**100% elimination**)
 - Aggregate row 3: file reads `35 → 7` (**80% reduction**)
 - Hero token number: per-session retrieval `60,000 → 18,000 tokens` (**70% saved**) — anchored to ch 3's session-level hidden-tax number
-- Test framing: "three real queries, same monorepo, without the graphs vs with" — composite framing
+- Test framing: "three real queries, same codebase, without the graphs vs with" — composite framing
 - Visual motif: benchmark table where rows animate in left → right, columns "Normal" vs "MCP" build separately
 - Sourcing note: Test 1 numbers come from a real session log; Tests 2-3 are realistic-but-shaped data for the talk (we have not run a clean A/B for all three queries). Speaker should answer Q&A honestly if pressed.
 
 **Development plan**:
 
 - step 1 (~10s) — Section title: "Three queries. Same codebase. Real numbers."
-- step 2 (~12s) — Test 1 row builds. Tool calls: `18 → 7`. File reads: `11 → 4`. Sub-annotation: "found the CQRS event handler grep would miss".
-- step 3 (~12s) — Test 2 row builds. Tool calls: `22 → 5`. File reads: `14 → 3`. Sub-annotation: "12 services · 4 events traced end-to-end".
-- step 4 (~12s) — Test 3 row builds. Tool calls: `15 → 3`. File reads: `10 → 0`. Sub-annotation: "11 dependencies surfaced, ranked by risk".
+- step 2 (~12s) — Test 1 row builds. Tool calls: `18 → 7`. File reads: `11 → 4`. Sub-annotation: "found a caller grep would have missed".
+- step 3 (~12s) — Test 2 row builds. Tool calls: `22 → 5`. File reads: `14 → 3`. Sub-annotation: "full chain · request to response · in one query".
+- step 4 (~12s) — Test 3 row builds. Tool calls: `15 → 3`. File reads: `10 → 0`. Sub-annotation: "11 dependencies surfaced · ranked by risk".
 - step 5 (~11s) — Aggregate row 1 lights up: `55 → 15` tool calls. **73%** stamp.
 - step 6 (~11s) — Aggregate row 2: grep ops `18 → 0`. **100%** stamp.
 - step 7 (~11s) — Aggregate row 3: file reads `35 → 7`. **80%** stamp.

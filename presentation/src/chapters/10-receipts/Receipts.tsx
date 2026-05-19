@@ -16,30 +16,30 @@ interface Test {
 const TESTS: Test[] = [
   {
     id: "01",
-    label: "exception assignment flow",
+    label: "find every caller of this function",
     metrics: [
       { label: "tool calls", before: "18", after: "7" },
       { label: "file reads", before: "11", after: "4" },
     ],
-    bonus: "found the CQRS event handler grep would miss",
+    bonus: "found a caller grep would have missed",
   },
   {
     id: "02",
-    label: "invoice → payable matching",
+    label: "trace this request end-to-end",
     metrics: [
       { label: "tool calls", before: "22", after: "5" },
       { label: "file reads", before: "14", after: "3" },
     ],
-    bonus: "12 services · 4 events traced end-to-end",
+    bonus: "full chain · request to response · in one query",
   },
   {
     id: "03",
-    label: "schema impact: InvoiceLineItem",
+    label: "what depends on this data model",
     metrics: [
       { label: "tool calls", before: "15", after: "3" },
       { label: "file reads", before: "10", after: "0" },
     ],
-    bonus: "11 dependencies surfaced, ranked by risk",
+    bonus: "11 dependencies surfaced · ranked by risk",
   },
 ];
 
@@ -107,7 +107,7 @@ export default function Receipts({ step }: ChapterStepProps) {
     return (
       <div className="rc-scene scene-pad">
         <div className="rc-step0">
-          <div className="rc-step0-label">The receipts · our monorepo</div>
+          <div className="rc-step0-label">The receipts</div>
           <h2 className="rc-step0-h">
             Three queries.
             <br />

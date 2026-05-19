@@ -179,19 +179,19 @@ MCP over CLI saves about two hundred tokens per call. Your agent asks. The graph
 
 ## Chapter 10 — The receipts
 
-Three real queries. Same monorepo. Without the graphs versus with.
+Three real queries. Same codebase. Without the graphs versus with.
 
 ---
 
-Test 1 — exception assignment flow. Eighteen tool calls became seven. Eleven file reads became four. And it found the CQRS event handler grep would have missed.
+Test 1 — find every caller of this function. Eighteen tool calls became seven. Eleven file reads became four. And it found a caller grep would have missed.
 
 ---
 
-Test 2 — invoice to payable matching. Twenty-two calls became five. Fourteen reads became three. Twelve services and four events, traced end-to-end.
+Test 2 — trace this request end-to-end. Twenty-two calls became five. Fourteen reads became three. The full chain, request to response, in one query.
 
 ---
 
-Test 3 — schema impact on InvoiceLineItem. Fifteen calls became three. Ten reads became zero. Eleven dependencies surfaced, ranked by risk.
+Test 3 — what depends on this data model. Fifteen calls became three. Ten reads became zero. Eleven dependencies surfaced, ranked by risk.
 
 ---
 
