@@ -1,0 +1,81 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Chapter 12 — Q&A / Thanks
+ *
+ * Two steps. The closing frames.
+ *   0 · "Questions?" — holds during Q&A (blinking caret only)
+ *   1 · "Thanks." — final frame, rule grows beneath
+ *
+ * Class prefix: .qa-
+ * ───────────────────────────────────────────────────────────────────── */
+
+.qa-scene { color: var(--text); }
+.qa-em { color: var(--accent); }
+
+/* ─── step 0 — Questions? ─── */
+.qa-step0 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.qa-h {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 360px;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  margin: 0;
+  color: var(--text);
+  opacity: 0;
+  animation: qa-fade-up 1000ms cubic-bezier(0.19, 1, 0.22, 1) 100ms forwards;
+}
+.qa-caret {
+  display: inline-block;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  margin-left: 0.05em;
+  animation: qa-blink 1.05s steps(1, end) infinite;
+}
+
+/* ─── step 1 — Thanks. ─── */
+.qa-step1 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 56px;
+}
+.qa-h-thanks {
+  font-size: 400px;
+}
+.qa-rule {
+  display: block;
+  width: 360px;
+  height: 2px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--accent) 0,
+      var(--accent) 16px,
+      transparent 16px,
+      transparent 32px
+    );
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: qa-rule-grow 1200ms cubic-bezier(0.86, 0, 0.07, 1) 800ms forwards;
+}
+
+/* ── keyframes ── */
+@keyframes qa-fade-up {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes qa-rule-grow {
+  to { transform: scaleX(1); }
+}
+@keyframes qa-blink {
+  50% { opacity: 0; }
+}

@@ -1,6 +1,7 @@
-# Speaker Notes — Cutting Claude's Token Bill
+# Speaker Notes — Token Diet
 
-Two-presenter notes for the 8-minute web-video presentation.
+Two-presenter notes for the ~8.5-minute web-video presentation
+"Token Diet: Stop Burning Cash on AI Dev Tools."
 Complement to [script.md](script.md) (on-screen text) and
 [outline.md](outline.md) (visual plan).
 
@@ -27,18 +28,47 @@ Complement to [script.md](script.md) (on-screen text) and
 
 | Chapters | Speaker | Block |
 |---|---|---|
-| 1 · 2 · 3 · 4 | **A** | The problem |
-| 5 · 6 · 7 · 8 | **B** | The solution |
-| 9 · 10 | **Both** (tag-team) | The proof + the close |
+| 1 | **Both / either** | Cover (holds before the talk; one click to begin) |
+| 2 · 3 · 4 · 5 | **A** | The problem (intro → hidden tax → over-read → hinge) |
+| 6 · 7 · 8 · 9 | **B** | The solution (GitNexus → Graphify → dual engine → setup) |
+| 10 · 11 | **Both** (tag-team) | The proof + the close |
+| 12 | **Both / either** | Q&A then Thanks (holds during questions) |
 
-Natural handoffs: A → B at the end of **ch 4** (the hinge), then both
-share the stage from **ch 9** onward.
+Natural handoffs:
+- **A → B** at the end of **ch 5** (the hinge)
+- **B → both** at the end of **ch 9** (after the setup)
+- Both speakers share the stage for **ch 10–12**
 
 ---
 
 ---
 
-# Chapter 1 — Intro
+# Chapter 1 — Cover
+
+**Speaker:** Either / both. Whoever is closest to the laptop. No spoken script — the cover holds while the room fills in.
+**Tone:** Quiet professionalism. Don't engage the slide. Greet people, set up your mic, drink water.
+**Budget:** Holds indefinitely. One click to begin.
+
+### What's on the slide
+
+- **Token Diet.** (hero)
+- **Stop Burning Cash on AI Dev Tools** (subtitle)
+- dashed cyan rule
+- **real tricks · real savings · no filler** (tagline, accent color)
+
+### Notes
+
+- This is *evergreen* — no date, no speaker names. Same slide works for re-runs.
+- One-time entrance animation, then static. Won't distract during pre-talk chatter.
+- When ready to begin, the lead speaker clicks once — advances to ch 2 (Intro), where Speaker A takes over.
+
+### Handoff
+
+When ready: click → Speaker A opens ch 2 with **"Using Claude Code for serious work?"**
+
+---
+
+# Chapter 2 — Intro
 
 **Speaker:** A
 **Tone:** Warm, conversational. You're inviting the room in. Not a pitch yet — just a question and a frame.
@@ -72,11 +102,11 @@ share the stage from **ch 9** onward.
 
 ### Handoff line
 
-A continues into ch 2: **"Let me show you what the bleeding looks like."** → click
+A continues into ch 3: **"Let me show you what the bleeding looks like."** → click
 
 ---
 
-# Chapter 2 — The Hidden Tax
+# Chapter 3 — The Hidden Tax
 
 **Speaker:** A
 **Tone:** Factual, slightly dramatic. The numbers do the work — don't oversell them. Pause after the big one.
@@ -101,7 +131,7 @@ A continues into ch 2: **"Let me show you what the bleeding looks like."** → c
 **Step 3 — "Not thinking. Looking."**
 - The reframe. These tokens are scanning, not reasoning.
 - You're paying inference rates for what should be a database query.
-- Conceptual seed for the hinge (ch 4).
+- Conceptual seed for the hinge (ch 5).
 
 **Step 4 — "Every session pays again."**
 - Stateless retrieval. No persistent index between sessions.
@@ -120,11 +150,11 @@ A continues into ch 2: **"Let me show you what the bleeding looks like."** → c
 
 ### Handoff line
 
-A continues into ch 3: **"Why does this happen every time?"** → click
+A continues into ch 4: **"Why does this happen every time?"** → click
 
 ---
 
-# Chapter 3 — Why Agents Over-Read
+# Chapter 4 — Why Agents Over-Read
 
 **Speaker:** A
 **Tone:** Explainer. Walking them through the mechanism. Let the file-tree animation carry the pacing.
@@ -163,11 +193,11 @@ A continues into ch 3: **"Why does this happen every time?"** → click
 
 ### Handoff line
 
-A continues into ch 4: **"So here's the question — can we do better?"** → click
+A continues into ch 5: **"So here's the question — can we do better?"** → click
 
 ---
 
-# Chapter 4 — The Hinge
+# Chapter 5 — The Hinge
 
 **Speaker:** A
 **Tone:** *Slow down.* This is the talk's pivot. Less energy, more weight. Eye contact (if live) or held silence (if recorded).
@@ -205,7 +235,7 @@ This is the speaker handoff. Practice it — eye contact between speakers, half-
 
 ---
 
-# Chapter 5 — GitNexus
+# Chapter 6 — GitNexus
 
 **Speaker:** B
 **Tone:** Technical confidence. You're the tools person now. Energy up.
@@ -258,11 +288,11 @@ This is the speaker handoff. Practice it — eye contact between speakers, half-
 
 ### Handoff line
 
-B continues into ch 6: **"But code isn't your whole context."**
+B continues into ch 7: **"But code isn't your whole context."**
 
 ---
 
-# Chapter 6 — Graphify
+# Chapter 7 — Graphify
 
 **Speaker:** B
 **Tone:** Shift gear. We're past structural. Now we're semantic. Slightly more curious / exploratory energy.
@@ -290,7 +320,7 @@ B continues into ch 6: **"But code isn't your whole context."**
 - **AMBIGUOUS** = flagged for human audit.
 
 **Step 7 — "GitNexus = what calls this. Graphify = why does this exist."**
-- Side-by-side framing prepares ch 7.
+- Side-by-side framing prepares ch 8.
 - "What" vs "Why" — different question types, different graphs.
 
 ### Live examples to share
@@ -307,11 +337,11 @@ B continues into ch 6: **"But code isn't your whole context."**
 
 ### Handoff line
 
-B continues into ch 7: **"So you don't pick one. You use both."**
+B continues into ch 8: **"So you don't pick one. You use both."**
 
 ---
 
-# Chapter 7 — The Dual Engine
+# Chapter 8 — The Dual Engine
 
 **Speaker:** B
 **Tone:** Synthesis. Pulling the two together. Calm, confident.
@@ -345,11 +375,11 @@ B continues into ch 7: **"So you don't pick one. You use both."**
 
 ### Handoff line
 
-B continues into ch 8: **"Setup is — honestly — embarrassingly small."**
+B continues into ch 9: **"Setup is — honestly — embarrassingly small."**
 
 ---
 
-# Chapter 8 — Setup
+# Chapter 9 — Setup
 
 **Speaker:** B
 **Tone:** Low-key reassurance. "It's easier than you'd expect." Don't dwell.
@@ -362,11 +392,10 @@ B continues into ch 8: **"Setup is — honestly — embarrassingly small."**
 - The actual install lives in each tool's README. Link slide at the end if you want.
 - "If you've added an MCP server before, this is the same exercise."
 
-**Step 1 — MCP > CLI ledger + dev-loop diagram**
-- "MCP over CLI saves about two hundred tokens per call."
+**Step 1 — MCP > CLI saves ~200 tokens per call**
 - The 200 number = per CLI invocation overhead (shell startup + JSON parsing).
 - With dozens of tool calls per query, this adds up.
-- Then the dev loop: agent → graph → answer. **No file reads in the agent's context.**
+- And then the dev loop: agent → graph → answer. **No file reads in the agent's context.**
 
 ### Live examples to share
 
@@ -383,11 +412,11 @@ B continues into ch 8: **"Setup is — honestly — embarrassingly small."**
 
 B looks toward A: **"OK — proof time."**
 
-This is the second speaker transition. Both speakers now share the stage for ch 9-10.
+This is the second speaker transition. Both speakers now share the stage for ch 10–12.
 
 ---
 
-# Chapter 9 — The Receipts *(tag-team)*
+# Chapter 10 — The Receipts *(tag-team)*
 
 **Speakers:** Both. A reads benchmark numbers; B punctuates / adds context. Alternate naturally — see step-by-step assignments below.
 **Tone:** Factual but punchy. The numbers are the win — let them land.
@@ -407,7 +436,7 @@ This is the second speaker transition. Both speakers now share the stage for ch 
 
 **Step 2 — Test 2: blast radius**
 - **B:** "Test two. Blast radius on DocumentsService. Fifteen calls became two."
-- **A:** "Zero execution flows traced — became nine. With risk ranking."
+- **A** punctuates: "Zero execution flows traced — became nine. With risk ranking."
 - *Talking point:* "Risk ranking = GitNexus orders the affected flows by hop count and file criticality."
 
 **Step 3 — Test 3: end-to-end editor flow**
@@ -448,11 +477,11 @@ This is the second speaker transition. Both speakers now share the stage for ch 
 
 ### Handoff line
 
-Either speaker, into ch 10: **"So what does that mean for you?"**
+Either speaker, into ch 11: **"So what does that mean for you?"**
 
 ---
 
-# Chapter 10 — Closing *(tag-team)*
+# Chapter 11 — Closing *(tag-team)*
 
 **Speakers:** Both. Alternating slogans. Joint outro.
 **Tone:** Wrap. Let the strikethrough do the work. Don't add anything new.
@@ -462,7 +491,7 @@ Either speaker, into ch 10: **"So what does that mean for you?"**
 
 **Step 0 — "Index once. Reuse forever."**
 - **A** reads it.
-- Echo of the chapter 4 hinge ("pre-computable asset"). Closes the loop.
+- Echo of the chapter 5 hinge ("pre-computable asset"). Closes the loop.
 
 **Step 1 — "Pay tokens for thinking. / Stop paying them for finding."**
 - **B:** "Pay tokens for thinking."
@@ -473,14 +502,52 @@ Either speaker, into ch 10: **"So what does that mean for you?"**
 - **Both, in unison if you can pull it off.** Otherwise B leads, A echoes faintly.
 - Hold the closing frame. Let the dashed rules complete.
 
-### After the talk
-
-- Don't put up a CTA slide. The room knows where to find the tools.
-- If there's Q&A, the most likely topics are: language support, codebase size, install steps. Notes above cover all three.
-
 ### Handoff line
 
-End of talk. Open for Q&A or close.
+Either speaker, into ch 12: **"Anything you want to dig into?"** → click → "Questions?" slide
+
+---
+
+# Chapter 12 — Q&A · Thanks
+
+**Speakers:** Either / both. Lead speaker drives the click cadence.
+**Tone:** Open, generous. The talk is over; the audience is allowed to take it elsewhere.
+**Budget:** Step 0 holds during Q&A. Step 1 is the final frame.
+
+### Step notes
+
+**Step 0 — "Questions?"**
+- The slide does the work — big "Questions?" with a blinking cyan caret.
+- *Don't* fill silence. Wait 5+ seconds before prompting. Audiences need time to formulate.
+- If no questions come: prompt with one of the cross-chapter Q&A items below (e.g., "I'll get us started — the question I get most often is about codebase size...").
+- If multiple speakers, take turns answering — Speaker A on workflow / problem questions, Speaker B on tooling / integration questions.
+
+**Step 1 — "Thanks."**
+- Click here when you're wrapping. Final hero slide.
+- Don't add a verbal "thank you for coming" — the slide says it. Just smile.
+- Hold the frame until you walk off / cut the recording.
+
+### Live examples to share *(if Q&A goes quiet)*
+
+- "If nobody's asking — here's the question I get most: *can my team adopt this gradually?* Yes — start one person, prove the token saving on their workflow, then roll out."
+- "Another common one: *what if my codebase changes every hour?* Re-index runs in seconds. Not a problem."
+- "Or: *can I see the actual MCP config?* Quick demo on my laptop after — happy to walk through it."
+
+### Anticipated Q&A topics
+
+Most likely topics (with answer cues in the cross-chapter appendix below):
+- Language support / framework coverage
+- Privacy / where the graph is stored
+- Cost / dollar math
+- Comparisons to Cursor, Sourcegraph, Continue, etc.
+- Adoption path for teams
+- What if it breaks / what's the fallback
+
+If you don't know an answer: *say so*. "Good question — I haven't tried that. Try it and tell me." beats inventing one.
+
+### Handoff
+
+End of presentation. Cut recording or close laptop.
 
 ---
 
@@ -518,9 +585,10 @@ If asked who this is for:
 # Pre-talk checklist
 
 - [ ] Both speakers have read this doc end-to-end
-- [ ] Hinge transition (ch 4 → ch 5) rehearsed — that pause is load-bearing
-- [ ] Ch 9 alternation rehearsed — practice who reads which line
-- [ ] Ch 10 unison line rehearsed (or single-speaker fallback agreed)
-- [ ] Current Claude pricing checked for the dollar-translation answer in ch 2 Q&A
+- [ ] Hinge transition (ch 5 → ch 6) rehearsed — that pause is load-bearing
+- [ ] Ch 10 alternation rehearsed — practice who reads which line
+- [ ] Ch 11 unison line rehearsed (or single-speaker fallback agreed)
+- [ ] Cover slide showing in browser before audience arrives
+- [ ] Current Claude pricing checked for the dollar-translation answer in ch 3 Q&A
 - [ ] Backup plan if the dev server / browser fails mid-talk (have a screen recording ready as fallback)
 - [ ] Q&A answers reviewed once — especially the language-support, codebase-size, and install-steps questions (most asked)

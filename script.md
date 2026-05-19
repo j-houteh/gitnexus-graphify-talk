@@ -1,12 +1,19 @@
-# Script — Cutting Claude's Token Bill with GitNexus + Graphify
+# Script — Token Diet: Stop Burning Cash on AI Dev Tools
 
-Beat sheet for an ~8-minute, English-language, engineer-audience web
-presentation. Each `---` is one step boundary. Designed to be either
-voiced in post or read silently on-screen as captions.
+Beat sheet for an ~8.5-minute, English-language, engineer-audience web
+presentation on cutting Claude / Copilot / Cursor token usage with
+GitNexus + Graphify. Each `---` is one step boundary. Designed to be
+either voiced in post or read silently on-screen as captions.
 
 ---
 
-## Chapter 1 — Intro
+## Chapter 1 — Cover
+
+Token Diet. Stop burning cash on AI dev tools. *(holds before the talk)*
+
+---
+
+## Chapter 2 — Intro
 
 Using Claude Code for serious work?
 
@@ -20,7 +27,7 @@ Here's how to cut it.
 
 ---
 
-## Chapter 2 — The hidden tax
+## Chapter 3 — The hidden tax
 
 One question to your agent.
 
@@ -42,7 +49,7 @@ And every session, it pays the bill again.
 
 ---
 
-## Chapter 3 — Why agents over-read
+## Chapter 4 — Why agents over-read
 
 The pattern is always the same. Grep. Read. Grep. Read.
 
@@ -60,7 +67,7 @@ It's reading the book to find the table of contents.
 
 ---
 
-## Chapter 4 — The hinge
+## Chapter 5 — The hinge
 
 Here's the flip.
 
@@ -70,7 +77,7 @@ Here's the flip.
 
 ---
 
-## Chapter 5 — GitNexus: the structural graph
+## Chapter 6 — GitNexus: the structural graph
 
 GitNexus parses your code into a graph. Once. Up front.
 
@@ -104,7 +111,7 @@ And it ships as an MCP server, so Claude calls it natively. No shell. No round-t
 
 ---
 
-## Chapter 6 — Graphify: the semantic graph
+## Chapter 7 — Graphify: the semantic graph
 
 Graphify reads more than code.
 
@@ -138,7 +145,7 @@ GitNexus answers "what calls this." Graphify answers "why does this exist."
 
 ---
 
-## Chapter 7 — The dual engine
+## Chapter 8 — The dual engine
 
 You don't pick one. You route to the right one.
 
@@ -160,7 +167,7 @@ The analogy: Graphify is `ANALYZE` statistics. GitNexus is the query planner.
 
 ---
 
-## Chapter 8 — Setup
+## Chapter 9 — Setup
 
 Both tools ship as MCP servers. A few commands per their docs — and they're wired into Claude.
 
@@ -170,7 +177,7 @@ MCP over CLI saves about two hundred tokens per call. Your agent asks. The graph
 
 ---
 
-## Chapter 9 — The receipts
+## Chapter 10 — The receipts
 
 Three real queries. Same codebase. Normal Claude versus Claude with the graphs.
 
@@ -204,7 +211,7 @@ And the headline number — retrieval tokens for one query. Thirteen thousand se
 
 ---
 
-## Chapter 10 — Closing
+## Chapter 11 — Closing
 
 Index once. Reuse forever.
 
@@ -215,3 +222,13 @@ Pay tokens for thinking. Stop paying them for finding.
 ---
 
 Watch the meter drop.
+
+---
+
+## Chapter 12 — Q&A / Thanks
+
+Questions?
+
+---
+
+Thanks.
