@@ -68,6 +68,88 @@
   animation: qa-rule-grow 1200ms cubic-bezier(0.86, 0, 0.07, 1) 800ms forwards;
 }
 
+/* ─── step 1 — Developer Guide reference ─── */
+.qa-step-guide {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  opacity: 0;
+  animation: qa-fade-up 900ms cubic-bezier(0.19, 1, 0.22, 1) 100ms forwards;
+}
+.qa-guide-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.qa-guide-tick {
+  display: inline-block;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  opacity: 0.7;
+}
+.qa-guide-h {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 168px;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 0;
+  color: var(--text);
+}
+.qa-guide-sub {
+  font-family: var(--font-body);
+  font-size: 30px;
+  line-height: 1.4;
+  color: var(--text-2);
+  margin: 0 0 32px 0;
+  max-width: 1000px;
+}
+.qa-guide-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 56px;
+  padding: 40px 56px;
+  background: #ffffff;
+  border: var(--rule-w) solid var(--accent);
+  box-shadow: 0 24px 80px rgba(0, 20, 60, 0.45);
+}
+.qa-guide-qr {
+  display: block;
+  width: 360px;
+  height: 360px;
+  image-rendering: pixelated;
+}
+.qa-guide-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 580px;
+}
+.qa-guide-label {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--shell);
+  opacity: 0.55;
+}
+.qa-guide-url {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  line-height: 1.35;
+  color: var(--shell);
+  font-weight: 500;
+  word-break: break-word;
+}
+
 /* ── keyframes ── */
 @keyframes qa-fade-up {
   from { opacity: 0; transform: translateY(32px); }
