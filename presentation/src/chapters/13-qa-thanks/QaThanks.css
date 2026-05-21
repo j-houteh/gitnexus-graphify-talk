@@ -150,6 +150,35 @@
   word-break: break-word;
 }
 
+/* ─── QR (corner — Thanks step) ─── */
+.qa-qr {
+  position: absolute;
+  bottom: var(--stage-pad-y);
+  right: var(--stage-pad-x);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: qa-fade-up 900ms cubic-bezier(0.19, 1, 0.22, 1) 1600ms forwards;
+}
+.qa-qr-img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  padding: 12px;
+  background: #ffffff;
+  image-rendering: pixelated;
+  box-shadow: 0 8px 32px rgba(0, 20, 60, 0.35);
+}
+.qa-qr-label {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
 /* ── keyframes ── */
 @keyframes qa-fade-up {
   from { opacity: 0; transform: translateY(32px); }

@@ -59,6 +59,15 @@ export default function QaThanks({ step }: ChapterStepProps) {
         </h1>
         <span className="qa-rule" />
       </div>
+
+      <aside className="qa-qr" aria-label="Feedback QR code">
+        <img
+          className="qa-qr-img"
+          src="/c-evaluation.png"
+          alt="Scan to leave session feedback"
+        />
+        <span className="qa-qr-label">Feedback</span>
+      </aside>
     </div>
   );
 }
