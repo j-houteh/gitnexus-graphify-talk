@@ -11,13 +11,22 @@ export default function Cover(_props: ChapterStepProps) {
         </h1>
         <span className="cv-rule" />
         <div className="cv-tag">
-          <span className="cv-tag-clause">day-one ready</span>
+          <span className="cv-tag-clause">less reading</span>
           <span className="cv-tag-dot">·</span>
-          <span className="cv-tag-clause">lookup not grep</span>
+          <span className="cv-tag-clause">more knowing</span>
           <span className="cv-tag-dot">·</span>
-          <span className="cv-tag-clause">no theory</span>
+          <span className="cv-tag-clause">same-day shipping</span>
         </div>
       </div>
+
+      <aside className="cv-qr" aria-label="Attendance QR code">
+        <img
+          className="cv-qr-img"
+          src="/c-attendance.png"
+          alt="Scan to mark attendance"
+        />
+        <span className="cv-qr-label">Attendance</span>
+      </aside>
     </div>
   );
 }
