@@ -294,6 +294,8 @@
   color: var(--text-mute);
   line-height: 0.9;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  letter-spacing: -0.025em;
 }
 .rc-token-num-accent { color: var(--accent); }
 .rc-token-tag {

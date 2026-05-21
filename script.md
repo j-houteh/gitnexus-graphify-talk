@@ -1,4 +1,4 @@
-# Script — Token Diet: Stop Burning Cash on AI Dev Tools
+# Script — Day Diet
 
 Beat sheet for an ~8.5-minute, English-language, engineer-audience web
 presentation on cutting Claude / Copilot / Cursor token usage with
@@ -9,13 +9,13 @@ either voiced in post or read silently on-screen as captions.
 
 ## Chapter 1 — Cover
 
-Token Diet. Stop burning cash on AI dev tools. *(holds before the talk)*
+Day Diet. *(holds before the talk)*
 
 ---
 
 ## Chapter 2 — Intro
 
-Using Claude Code for serious work?
+Claude Code is on every laptop in this room.
 
 ---
 
@@ -33,19 +33,11 @@ One question to your agent.
 
 ---
 
-Twenty-five tool calls. Twelve file reads.
-
----
-
-Sixty thousand tokens — for one session.
+Twenty-five tool calls. Twelve file reads. Sixty thousand tokens. About two hours of agent flailing.
 
 ---
 
 That's not the model thinking. That's the model *looking*.
-
----
-
-And every session, it pays the bill again.
 
 ---
 
@@ -177,41 +169,35 @@ MCP over CLI saves about two hundred tokens per call. Your agent asks. The graph
 
 ---
 
-## Chapter 10 — The receipts
+## Chapter 10 — How the day changes
 
-Three real queries. Same codebase. Without the graphs versus with.
-
----
-
-Test 1 — find every caller of this function. Eighteen tool calls became seven. Eleven file reads became four. And it found a caller grep would have missed.
+Onboarding. You just opened a module you've never touched. Graphify maps it in ninety seconds.
 
 ---
 
-Test 2 — trace this request end-to-end. Twenty-two calls became five. Fourteen reads became three. The full chain, request to response, in one query.
+Refactor. You're about to change a function. GitNexus shows you every caller before you commit.
 
 ---
 
-Test 3 — what depends on this data model. Fifteen calls became three. Ten reads became zero. Eleven dependencies surfaced, ranked by risk.
+Debugging. A value is wrong and you can't see why. GitNexus walks the execution flow from input to output.
 
 ---
 
-Aggregate. Fifty-five tool calls collapsed to fifteen. Seventy-three percent fewer.
+## Chapter 11 — The receipts
+
+Three queries. Same codebase. Real numbers.
 
 ---
 
-Eighteen grep operations — gone. One hundred percent.
+Fifty-five tool calls became fifteen. Eighteen greps — gone. Thirty-five reads down to seven.
 
 ---
 
-Thirty-five file reads down to seven. Eighty percent fewer.
+Two hours of agent flailing became thirty minutes of grounded answers.
 
 ---
 
-And the headline — sixty thousand tokens per session, down to eighteen thousand. Seventy percent saved.
-
----
-
-## Chapter 11 — Closing
+## Chapter 12 — Closing
 
 Index once. Reuse forever.
 
@@ -221,14 +207,18 @@ Pay tokens for thinking. Stop paying them for finding.
 
 ---
 
+We have the graph. We just don't ask it yet.
+
+---
+
 Watch the meter drop.
 
 ---
 
-## Chapter 12 — Q&A / Thanks
+## Chapter 13 — Q&A / Developer Guide
 
 Questions?
 
 ---
 
-Thanks.
+Developer Guide. Setup, schema, recipes — the full reference, on Notion.

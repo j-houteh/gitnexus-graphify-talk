@@ -17,77 +17,40 @@ export default function HiddenTax({ step }: ChapterStepProps) {
     );
   }
 
-  /* Step 1 — counter row: tool calls + file reads */
+  /* Step 1 — the cost, in both units (token + time) */
   if (step === 1) {
-    return (
-      <div className="ht-scene scene-pad">
-        <div className="ht-step1">
-          <div className="kicker ht-kicker">For one query</div>
-          <div className="ht-counter-row">
-            <div className="ht-counter ht-rise">
-              <div className="hero-num ht-counter-num">25</div>
-              <div className="ht-counter-label">Tool calls</div>
-            </div>
-            <div className="ht-counter ht-rise ht-rise-2">
-              <div className="hero-num ht-counter-num">12</div>
-              <div className="ht-counter-label">File reads</div>
-            </div>
-          </div>
-          <div className="ht-caption-mono ht-fade-late">…to answer it.</div>
-        </div>
-      </div>
-    );
-  }
-
-  /* Step 2 — hero token number */
-  if (step === 2) {
     return (
       <div className="ht-scene scene-pad">
         <div className="ht-step2">
           <div className="ht-mini-row">
-            <span className="ht-mini">25 tool calls</span>
+            <span>25 tool calls</span>
             <span className="ht-mini-sep">·</span>
-            <span className="ht-mini">12 file reads</span>
-            <span className="ht-mini-sep">→</span>
-            <span className="ht-mini ht-mini-trail">one session</span>
+            <span>12 file reads</span>
+            <span className="ht-mini-sep">·</span>
+            <span className="ht-mini-trail">60,000 tokens</span>
           </div>
           <div className="ht-token-meter">
-            <span className="hero-num ht-token-num">60,000</span>
-            <span className="ht-token-unit">tokens · one session</span>
+            <span className="hero-num ht-token-num">≈ 2 hours</span>
+            <span className="ht-token-unit">of agent flailing · per session</span>
           </div>
         </div>
       </div>
     );
   }
 
-  /* Step 3 — Not thinking. Looking. */
-  if (step === 3) {
-    return (
-      <div className="ht-scene scene-pad">
-        <div className="ht-step3">
-          <div className="ht-corner-token">
-            <span className="ht-corner-label">Session cost</span>
-            <span className="ht-corner-num">60,000</span>
-          </div>
-          <h2 className="ht-h3">
-            Not <span className="ht-strike">thinking</span>.
-            <br />
-            <span className="ht-emph">Looking.</span>
-          </h2>
-        </div>
-      </div>
-    );
-  }
-
-  /* Step 4 — Every session pays again */
+  /* Step 2 — Not thinking. Looking. */
   return (
     <div className="ht-scene scene-pad">
-      <div className="ht-step4">
-        <h2 className="ht-h4">Every session pays again.</h2>
-        <div className="ht-rule-wrap">
-          <span className="ht-rule" />
+      <div className="ht-step3">
+        <div className="ht-corner-token">
+          <span className="ht-corner-label">Session cost</span>
+          <span className="ht-corner-num">≈ 2 hours</span>
         </div>
-        <div className="ht-foot">Next — why agents over-read</div>
+        <h2 className="ht-h3">
+          Not <span className="ht-strike">thinking</span>.
+          <br />
+          <span className="ht-emph">Looking.</span>
+        </h2>
       </div>
     </div>
   );

@@ -17,12 +17,14 @@ import DualEngine from "../chapters/08-dual-engine/DualEngine";
 import { narrations as dualEngineNarrations } from "../chapters/08-dual-engine/narrations";
 import Setup from "../chapters/09-setup/Setup";
 import { narrations as setupNarrations } from "../chapters/09-setup/narrations";
-import Receipts from "../chapters/10-receipts/Receipts";
-import { narrations as receiptsNarrations } from "../chapters/10-receipts/narrations";
-import Closing from "../chapters/11-closing/Closing";
-import { narrations as closingNarrations } from "../chapters/11-closing/narrations";
-import QaThanks from "../chapters/12-qa-thanks/QaThanks";
-import { narrations as qaThanksNarrations } from "../chapters/12-qa-thanks/narrations";
+import DayChanges from "../chapters/10-day-changes/DayChanges";
+import { narrations as dayChangesNarrations } from "../chapters/10-day-changes/narrations";
+import Receipts from "../chapters/11-receipts/Receipts";
+import { narrations as receiptsNarrations } from "../chapters/11-receipts/narrations";
+import Closing from "../chapters/12-closing/Closing";
+import { narrations as closingNarrations } from "../chapters/12-closing/narrations";
+import QaThanks from "../chapters/13-qa-thanks/QaThanks";
+import { narrations as qaThanksNarrations } from "../chapters/13-qa-thanks/narrations";
 
 /**
  * Order = order of presentation.
@@ -45,6 +47,7 @@ export const CHAPTERS: ChapterDef[] = [
   { id: "graphify",       title: "Graphify",              narrations: graphifyNarrations,     Component: Graphify },
   { id: "dual-engine",    title: "The Dual Engine",       narrations: dualEngineNarrations,   Component: DualEngine },
   { id: "setup",          title: "Setup",                 narrations: setupNarrations,        Component: Setup },
+  { id: "day-changes",    title: "How the Day Changes",   narrations: dayChangesNarrations,   Component: DayChanges },
   { id: "receipts",       title: "The Receipts",          narrations: receiptsNarrations,     Component: Receipts },
   { id: "closing",        title: "Closing",               narrations: closingNarrations,      Component: Closing },
   { id: "qa-thanks",      title: "Q&A · Thanks",          narrations: qaThanksNarrations,     Component: QaThanks },

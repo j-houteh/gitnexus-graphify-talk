@@ -101,11 +101,11 @@
 
 /* ── state: blast (step 6) ── */
 .gn-graph-blast .gn-node {
-  opacity: 0.18;
+  opacity: 0.32;
   fill: var(--text-faint);
 }
 .gn-graph-blast .gn-edge {
-  opacity: 0.08;
+  opacity: 0.18;
 }
 .gn-graph-blast .gn-node-blast {
   opacity: 1;
@@ -323,10 +323,39 @@
   letter-spacing: -0.02em;
   color: var(--text);
 }
+.gn-question-aside {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-top: 24px;
+  opacity: 0;
+  animation: gn-fade-up 700ms cubic-bezier(0.19, 1, 0.22, 1) 1100ms forwards;
+}
 
 /* ─────────────────────────────────────────────────────────────────────
  * step 6 — blast radius
+ *
+ * The blast path nodes (n2, n6, n11, n14) sit in the left third of the
+ * graph viewBox, so we rebalance the grid to 1fr:1fr and tighten the
+ * graph wrap so the bright cluster lands closer to the column center.
+ * Background nodes stay visible to make the contrast read on TV.
  * ───────────────────────────────────────────────────────────────────── */
+.gn-step-grid-blast {
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  justify-items: center;
+}
+.gn-step-grid-blast .gn-graph-wrap {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: 0;
+}
+.gn-step-grid-blast .gn-blast-info {
+  justify-self: start;
+  max-width: 720px;
+}
 .gn-blast-info {
   display: flex;
   flex-direction: column;

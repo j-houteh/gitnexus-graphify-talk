@@ -215,6 +215,7 @@ export default function GitNexus({ step }: ChapterStepProps) {
               "what changes <br/>
               if I <span className="gn-em">touch this?"</span>
             </div>
+            <div className="gn-question-aside">— the day-one question.</div>
           </div>
         </div>
       </div>
@@ -225,7 +226,7 @@ export default function GitNexus({ step }: ChapterStepProps) {
   if (step === 6) {
     return (
       <div className="gn-scene scene-pad">
-        <div className="gn-step-grid">
+        <div className="gn-step-grid gn-step-grid-blast">
           <div className="gn-graph-wrap">
             <Graph stateClass="gn-graph-blast" />
           </div>

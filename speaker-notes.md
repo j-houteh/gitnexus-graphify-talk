@@ -1,20 +1,35 @@
-# Speaker Notes — Token Diet
+# Speaker Notes — Day Diet
 
-Two-presenter notes for the ~8.5-minute web-video presentation
-"Token Diet: Stop Burning Cash on AI Dev Tools."
+Two-presenter notes for the ~6–7 minute web-video presentation **"Day Diet."**
+
+> The talk was originally announced as *"Token Diet — Stop Burning Cash on AI Dev Tools."* It evolved during development into the workflow-focused **Day Diet** (the "Diet" word preserved as a wordplay bridge — the audience that saw the announcement will still recognize it). Token savings now lives in Ch11 as supporting evidence, not the headline.
+
 Complement to [script.md](script.md) (on-screen text) and
 [outline.md](outline.md) (visual plan).
 
 ---
 
+## Speaker split — by lane, not by chapter
+
+Both presenters are on stage for every chapter. Lanes are by **content type**, not by chapter block:
+
+| Lane | Who | What they own |
+|---|---|---|
+| **Technical** | **Speaker A** | On-screen steps, what the audience is seeing, why it matters mechanically, the numbers. Drives the click cadence. |
+| **Examples** | **Speaker B** | Live anecdotes, "here's a real time I hit this," analogies, the *human* side of each beat. Color commentary, not narration. |
+| **Q&A** | Either | Whoever has direct knowledge takes the question. Default: A handles tooling/mechanics, B handles workflow/team-adoption. |
+
+**Rhythm per chapter:** A walks the steps → B drops one example (or two on the meatier chapters) → click forward.
+**Cover (Ch1) and the Q&A holding card (Ch13)** can be driven by either — whoever is closer to the laptop.
+**The hinge (Ch5)** and the **adoption-honesty beat (Ch12 step 2)** are the two moments where B leans in heavier — the human framing is the whole point of those slides.
+
 ## Format
 
 | Section | What it covers |
 |---|---|
-| **Speaker** | A · B · both (and who leads on tag-team steps) |
 | **Tone** | Pacing / energy guidance for this chapter |
-| **Step notes** | Per-step talking points beyond what's on screen |
-| **Live examples** | Concrete things to share that aren't in the captions |
+| **Step notes** | Per-step talking points beyond what's on screen (Speaker A drives) |
+| **Live examples** | Concrete things to share that aren't in the captions (Speaker B drops) |
 | **Anticipated Q&A** | Likely audience questions + answer cues |
 | **Handoff line** | Exact spoken bridge to the next chapter |
 
@@ -25,61 +40,43 @@ Complement to [script.md](script.md) (on-screen text) and
 
 ---
 
-## Split summary
-
-| Chapters | Speaker | Block |
-|---|---|---|
-| 1 | **Both / either** | Cover (holds before the talk; one click to begin) |
-| 2 · 3 · 4 · 5 | **A** | The problem (intro → hidden tax → over-read → hinge) |
-| 6 · 7 · 8 · 9 | **B** | The solution (GitNexus → Graphify → dual engine → setup) |
-| 10 · 11 | **Both** (tag-team) | The proof + the close |
-| 12 | **Both / either** | Q&A then Thanks (holds during questions) |
-
-Natural handoffs:
-- **A → B** at the end of **ch 5** (the hinge)
-- **B → both** at the end of **ch 9** (after the setup)
-- Both speakers share the stage for **ch 10–12**
-
----
-
 ---
 
 # Chapter 1 — Cover
 
-**Speaker:** Either / both. Whoever is closest to the laptop. No spoken script — the cover holds while the room fills in.
-**Tone:** Quiet professionalism. Don't engage the slide. Greet people, set up your mic, drink water.
+**Tone:** Quiet professionalism. Don't engage the slide. Greet people, set up your mic, drink water. *(No spoken script — the cover holds while the room fills in. Whoever's closest to the laptop clicks when ready.)*
 **Budget:** Holds indefinitely. One click to begin.
 
 ### What's on the slide
 
-- **Token Diet.** (hero)
-- **Stop Burning Cash on AI Dev Tools** (subtitle)
+- **Day Diet.** (hero — "Diet." in cyan accent)
 - dashed cyan rule
-- **real tricks · real savings · no filler** (tagline, accent color)
+- **day-one ready · lookup not grep · no theory** (tagline, accent color)
 
 ### Notes
 
+- **Title wordplay**: the audience was originally invited to "Token Diet." The shared word *Diet* is the bridge — they'll recognize it. *Day* is the new modifier; signals the new framing without making it a different talk.
+- If anyone asks "wait, didn't you announce Token Diet?" — *"Same talk, evolved. Token savings is still in there, just not the headline anymore. The headline is what changes in your day."*
 - Evergreen — no date, no speaker names. Same slide works for re-runs.
-- When ready to begin, the lead speaker clicks once — advances to ch 2 (Intro), where Speaker A takes over.
+- When ready to begin, whoever's at the laptop clicks once — advances to Ch2 (Intro), where A opens with the on-screen statement.
 
 ### Handoff
 
-When ready: click → Speaker A opens ch 2 with **"Using Claude Code for serious work?"**
+When ready: click → A opens Ch2 with the on-screen line: **"Claude Code is on every laptop in this room."**
 
 ---
 
 # Chapter 2 — Intro
 
-**Speaker:** A
-**Tone:** Warm, conversational. You're inviting the room in. Not a pitch yet — just a question and a frame.
+**Tone:** Warm, conversational. You're inviting the room in. Not a pitch yet — just a statement and a frame.
 **Budget:** ~25s
 
 ### Step notes
 
-**Step 0 — "Using Claude Code for serious work?"**
-- Acknowledge the room. Most engineers here will be using Claude or a similar agent daily.
-- "Serious work" = production code, not weekend toys. Sets stakes without naming them.
-- Treat it as an actual question — small pause for nods.
+**Step 0 — "Claude Code is on every laptop in this room."**
+- This is a statement, not a question. Don't soften it. Look around the room as you say it.
+- Anchors the talk: this isn't a sales pitch about whether AI coding agents matter — we already use them. The question is whether we use them *well*.
+- One-beat pause for the cyan caret to land before clicking next.
 
 **Step 1 — "Your token bill has a quiet leak."**
 - The word "quiet" matters. The leak isn't dramatic — it's invisible. That's the framing.
@@ -108,9 +105,8 @@ A continues into ch 3: **"Let me show you what the bleeding looks like."** → c
 
 # Chapter 3 — The Hidden Tax
 
-**Speaker:** A
-**Tone:** Factual, slightly dramatic. The numbers do the work — don't oversell them. Pause after the big one.
-**Budget:** ~45s
+**Tone:** Factual, slightly dramatic. The numbers do the work — don't oversell them. Lead with time, not tokens.
+**Budget:** ~25s · **3 steps** *(was 5 — collapsed the per-counter reveals into one combined cost slide, dropped the "every session pays again" coda)*
 
 ### Step notes
 
@@ -118,36 +114,27 @@ A continues into ch 3: **"Let me show you what the bleeding looks like."** → c
 - Set scope: this is what a typical exploration-heavy session looks like in our codebase.
 - Frame: cost-per-session, not cost-per-day.
 
-**Step 1 — "25 tool calls · 12 file reads"**
-- Pause here. Let the digits register.
-- "Tool call" ≈ the agent invoking grep, read, or another search. 25 of them in a single session.
-- "File read" = full file contents loaded into the agent's context.
+**Step 1 — "≈ 2 hours of agent flailing · per session"** (with 25 / 12 / 60K breadcrumb above)
+- Lead with the *time*. Don't read the tokens — they're a breadcrumb for credibility, not the headline.
+- "Two hours" lands because everyone in the room has felt it. Token counts are abstract; lost mornings aren't.
+- Optional aside if the room is engaged: "The token bill is real too — sixty thousand per session. We measured. But the reason we're here is the *time* we're paying for, not the dollars."
 
-**Step 2 — "60,000 tokens · one session"**
-- *This is the pain number for our monorepo.* Hold longer than feels comfortable.
-- Optional dollar translation: at current Claude Sonnet rates (~$3/M input tokens), that's about $0.18 just on retrieval for one session. Per engineer, per session. Compounds fast.
-- 10 sessions / day × 10 engineers × 250 days × $0.18 ≈ real budget line.
-
-**Step 3 — "Not thinking. Looking."**
-- The reframe. These tokens are scanning, not reasoning.
+**Step 2 — "Not thinking. Looking."**
+- The reframe. These tokens (and these hours) are scanning, not reasoning.
 - You're paying inference rates for what should be a database query.
 - Conceptual seed for the hinge (ch 5).
 
-**Step 4 — "Every session pays again."**
-- Stateless retrieval. No persistent index between sessions.
-- New conversation = redo all the looking.
-
 ### Live examples to share
 
-- "If you've ever watched Claude open the same file three times in one conversation — that's what we're paying for."
+- "If you've ever watched Claude open the same file three times in one conversation — that's what those two hours look like."
 - "The expensive part of Claude isn't the math. It's the giant attention layer over the retrieved context."
 - "We pulled these numbers from session logs in our own monorepo last week. Not a benchmark — actual work."
 
 ### Anticipated Q&A
 
-- *"Is 60K typical or cherry-picked?"* — Round from our observed sessions. Exploration-heavy sessions in a 1,600-file repo land in this range. Bigger repos go higher.
-- *"Couldn't I just use a smaller model for retrieval?"* — Different problem. The retrieval *mechanism* (grep+read) is wrong for structured data, no matter the model size.
-- *"What's the dollar number?"* — At Claude Sonnet rates (~$3/M input tokens), 60K ≈ $0.18 per session. Modest per session; meaningful at team scale plus output tokens.
+- *"Is two hours typical or cherry-picked?"* — Round from our observed exploration-heavy sessions in a 1,600-file repo. Bigger repos go higher. Quick refactor sessions might be 30 min.
+- *"Where do you get '~2 hours' from 60K tokens?"* — Wall-clock observation, not a token-to-time formula. Sessions with this much retrieval take roughly this long in our work.
+- *"What's the dollar number?"* — At Claude Sonnet rates (~$3/M input tokens), 60K ≈ $0.18 per session. Modest per session; meaningful at team scale. Mention only if asked.
 
 ### Handoff line
 
@@ -157,7 +144,6 @@ A continues into ch 4: **"Why does this happen every time?"** → click
 
 # Chapter 4 — Why Agents Over-Read
 
-**Speaker:** A
 **Tone:** Explainer. Walking them through the mechanism. Let the file-tree animation carry the pacing.
 **Budget:** ~40s
 
@@ -199,8 +185,7 @@ A continues into ch 5: **"So here's the question — can we do better?"** → cl
 
 # Chapter 5 — The Hinge
 
-**Speaker:** A
-**Tone:** *Slow down.* This is the talk's pivot. Less energy, more weight. Eye contact (if live) or held silence (if recorded).
+**Tone:** *Slow down.* This is the talk's pivot. Less energy, more weight. Eye contact (if live) or held silence (if recorded). **B leans in heavier here** — the database / query-planner analogy is exactly the kind of human framing that makes the line stick.
 **Budget:** ~30s
 
 ### Step notes
@@ -227,24 +212,23 @@ A continues into ch 5: **"So here's the question — can we do better?"** → cl
 - *"Why hasn't this been standard for years?"* — IDEs do it locally (call hierarchy, etc.). The shift is making it *available to LLM agents* via MCP.
 - *"Where did this framing come from?"* — Honest answer if asked: it's a synthesis of how database query planning works applied to code intelligence. There's prior writing from the GitNexus / dual-graph community we drew on. Happy to share links offline if anyone wants to dig in.
 
-### Handoff line — **A to B**
+### Handoff line
 
-A pauses, then nods to B: **"So how do we pre-compute it? [B steps forward]"**
+A pauses after the hero quote, lets it land, then nods toward the toolset: **"So how do we pre-compute it?"** → click into Ch6.
 
-This is the speaker handoff. Practice it — eye contact between speakers, half-second pause, then B's energy picks up.
+Practice the pause. The silence after the quote is load-bearing — don't rush.
 
 ---
 
 # Chapter 6 — GitNexus
 
-**Speaker:** B
-**Tone:** Technical confidence. You're the tools person now. Energy up.
+**Tone:** Technical confidence. We're the tools-people now. Energy up.
 **Budget:** ~80s
 
 ### Step notes
 
 **Step 0 — "GitNexus / AST → graph → MCP"**
-- Speaker B's opener — own the topic.
+- Open with confidence — own the topic.
 - GitNexus is open source. Installable in minutes.
 - The three-word pipeline (AST → graph → MCP) IS the entire architecture. Don't over-explain.
 
@@ -258,10 +242,12 @@ This is the speaker handoff. Practice it — eye contact between speakers, half-
 - "Twenty-three thousand nodes. Forty-seven thousand edges." — edges:nodes ratio of ~2.1× = highly interconnected = the kind of repo grep struggles with.
 - "Two hundred and fifty-four execution flows — traced and ready." — your call graph is *already done* before you ask.
 
-**Step 5 — "what changes if I touch this?"**
+**Step 5 — "what changes if I touch this?" / "— the day-one question."**
 - This is the question every refactor starts with.
 - Without a graph: grep, guess, miss.
 - With a graph: deterministic.
+- The "day-one question" line under it is the *human* version of the same question. Anyone new to our codebase has it on their first PR. Anyone touching a corner they don't know has it. The graph answers it in seconds instead of half a day of "let me ask in Slack."
+- Optional verbal beat: "If you remember your first month here, this is the question you wished you could ask without bothering five people."
 
 **Step 6 — "3 hops. Not a grep. A lookup."**
 - The blast-radius example — concrete moment from our codebase: in a real session, the agent asked a natural-language question about a feature's flow and went **straight to the right function** without grep'ing first. **Zero greps. Four reads. Seven tool calls total.** Grep would have missed it entirely because the function gets registered through a decorator, not called by name.
@@ -294,7 +280,6 @@ B continues into ch 7: **"But code isn't your whole context."**
 
 # Chapter 7 — Graphify
 
-**Speaker:** B
 **Tone:** Shift gear. We're past structural. Now we're semantic. Slightly more curious / exploratory energy.
 **Budget:** ~80s
 
@@ -325,9 +310,13 @@ We have Graphify **installed** but haven't run it deeply against our team's docs
 - **INFERRED** = model-derived ("this design and this service probably relate based on terminology").
 - **AMBIGUOUS** = flagged for human audit.
 
-**Step 7 — "GitNexus = what calls this. Graphify = why does this exist."**
+**Step 7 — "what calls this?" / "why does this exist?" (contrast card)**
 - Side-by-side framing prepares ch 8.
 - "What" vs "Why" — different question types, different graphs.
+- The new asides on each card translate the contrast into felt human pain:
+  - **GitNexus side — "for code you've just opened"**: name onboarding explicitly. Anyone joining the team, switching projects, or touching a new module lives in this question. The graph cuts that "where am I" feeling from hours to minutes.
+  - **Graphify side — "for code you've inherited"**: name legacy code explicitly. The codebase contains decisions people made years ago — sometimes by people who've left. The "why does this exist" question is where complexity *feels* heaviest, and where graphify earns its keep.
+- This is also the slide where the audience starts to see the four pain points we live with — token bleed, onboarding cost, complexity drag — all collapsing into the same answer.
 
 ### Live examples to share
 
@@ -350,8 +339,7 @@ B continues into ch 8: **"So you don't pick one. You use both."**
 
 # Chapter 8 — The Dual Engine
 
-**Speaker:** B
-**Tone:** Synthesis. Pulling the two together. Calm, confident.
+**Tone:** Synthesis. Pulling the two together. Calm, confident. **B's analogy moment** — Postgres planner / `ANALYZE` is the killer human framing.
 **Budget:** ~50s
 
 ### Step notes
@@ -388,7 +376,6 @@ B continues into ch 9: **"Setup is — honestly — embarrassingly small."**
 
 # Chapter 9 — Setup
 
-**Speaker:** B
 **Tone:** Low-key reassurance. "It's easier than you'd expect." Don't dwell.
 **Budget:** ~25s
 
@@ -416,122 +403,130 @@ B continues into ch 9: **"Setup is — honestly — embarrassingly small."**
 - *"Where do I find the install steps?"* — GitNexus and Graphify both have READMEs on GitHub with platform-specific instructions.
 - *"Do I need both tools, or can I start with one?"* — Start with GitNexus (covers ~70% of queries). Add Graphify when you want cross-document semantic linking.
 
-### Handoff line — **B to (A + B together)**
+### Handoff line
 
-B looks toward A: **"OK — proof time."**
-
-This is the second speaker transition. Both speakers now share the stage for ch 10–12.
+After "your agent asks → the graph returns → no file reads," A clicks into Ch10 with: **"Here's what changes."**
 
 ---
 
-# Chapter 10 — The Receipts *(tag-team)*
+# Chapter 10 — How the Day Changes
 
-**Speakers:** Both. A reads benchmark numbers; B punctuates / adds context. Alternate naturally — see step-by-step assignments below.
-**Tone:** Factual but punchy. The numbers are the win — let them land.
-**Budget:** ~90s · **the climax chapter**
+**Tone:** Concrete, grounded. Three small day-in-the-life stories. Not theory. **This is B's heaviest chapter** — A reads the scenario labels and "tool → answer" lines (technical), B drops the personal anecdote on each scenario (where examples live).
+**Budget:** ~45s · **3 steps · the new heart of the talk**
+
+> Ch10 replaced an earlier setup-style chapter. **This is now the chapter that actually motivates adoption** — the receipts (Ch11) prove it numerically, but this is where audience members recognize *their own week* on screen. The receipts only work after this lands.
+
+### Step notes
+
+**Step 0 — "Onboarding · You just opened a module you've never touched · 'what does this module do?' → GRAPHIFY → cluster + summary. Half a day → ninety seconds."**
+- Reach for a real recent example: someone who joined recently, or a corner of the codebase one of you doesn't know.
+- Frame: "before graphify, this was a half-day of reading and asking. With graphify, it's a single query."
+- Don't oversell — say "you still verify the summary." The point is *first move*, not *only move*.
+
+**Step 1 — "Refactor · You're about to change a function · 'what depends on this?' → GITNEXUS → every caller, before the diff. No silent breaks."**
+- Most relatable scenario for senior engineers. Everyone has shipped a change that broke something unexpected.
+- "Before the diff" is the load-bearing phrase — gitnexus catches the surprise before it ships, not after.
+- Anchor: "the 'function registered via decorator' case from Ch6 — that's the one grep misses."
+
+**Step 2 — "Debugging · A value is wrong and you can't see why · 'where does this come from?' → GITNEXUS → walk the execution flow from input to output."**
+- Hardest pain point to talk about because everyone has been here. Quiet acknowledgement in tone.
+- Execution-flow tracing is what GitNexus uniquely does. Grep can find string matches; only the graph walks the chain.
+
+### Live examples to share
+
+- "If you came here hoping these tools would write code for you — they don't. They tell you *what your code already does*, fast. That's the gap they fill."
+- "Of the three scenarios on this slide, the one I personally hit most often is [pick one]. That's the one I'd encourage you to try the tools on first."
+
+### Anticipated Q&A
+
+- *"What about scenarios that aren't on this slide?"* — These are the most common. Anything else: try it, see if a graph answers it faster than grep + read. If yes, that's a workflow worth keeping.
+- *"Can these replace pair programming for onboarding?"* — No. They make pair sessions shorter and sharper. People still understand context better than tools do.
+
+### Handoff line
+
+A pivots into Ch11: **"Want to see the numbers behind it?"** → click.
+
+---
+
+# Chapter 11 — The Receipts
+
+**Tone:** Factual, fast. The numbers are *evidence*, not the headline — keep moving. **A drives all three steps** (technical / numbers lane). B stays quiet unless a hand goes up or a follow-up anecdote naturally lands after the hero.
+**Budget:** ~25s · **3 steps** *(was 8 — collapsed per-test breakdown into one aggregate slide, hero now leads with time)*
+
+> **Strategic note:** This chapter used to be the talk's climax. It isn't anymore — Ch10 (day-changes) does that job. Ch11 is now the *credibility anchor*: "yes, the time-savings we just claimed in Ch10 are real, here's the numbers." Don't dwell. Three slides, ~25 seconds, move on.
 
 ### Honest framing
 
-The Test 1 numbers (the function-caller query) come from a real session in our codebase — 7 tool calls / 4 reads with graphs enabled. Tests 2 and 3 are realistic for our codebase but didn't run a clean A/B for each; they're shaped from what we've observed broadly. If pressed in Q&A, say so — "Test 1 is from a logged session; Tests 2 and 3 are representative of what we see in similar queries, not directly measured A/B." Honest beats flashy.
+The aggregate numbers (55 → 15 tool calls; 18 → 0 greps; 35 → 7 reads; ≈ 2hr → ≈ 30min) come from session logs we ran in our monorepo. The wall-clock time figures are observational, not stopwatched. If pressed in Q&A: "Tool call counts and read counts are logged. The 2hr / 30min are wall-clock estimates from how those sessions actually played out — not a benchmark we'd publish as exact." Honest beats flashy.
 
 ### Step notes
 
 **Step 0 — "Three queries. Same codebase. Real numbers."**
-- **A** reads it. B nods.
-- Set frame: same codebase, same model, same task. Only difference is whether the graphs are wired in.
+- One beat to set frame: same codebase, same model, same task — only difference is the graphs.
 
-**Step 1 — Test 1: "find every caller of this function"** *(real session)*
-- **A:** "Test one. Find every caller of this function. Eighteen tool calls became seven."
-- **B:** "Eleven file reads became four. And it found a caller grep would have missed."
-- *Talking point:* "The hidden caller was a function registered through a framework decorator — never called by name in the source. Pure-text grep would never have surfaced it."
+**Step 1 — Aggregate: 55 → 15 tool calls (73%) · 18 → 0 greps (100%) · 35 → 7 reads (80%)**
+- Read the three rows fast and even. Don't dwell on the individual percentages — let the audience absorb the shape.
+- Honesty aside (drop if anyone in the room looks skeptical): "Test One — finding callers of a function — is from a real logged session. Test Two and Three are representative of similar queries we've watched. We didn't run a clean A/B for each; we're being honest about what we measured."
 
-**Step 2 — Test 2: "trace this request end-to-end"**
-- **B:** "Test two. Trace this request end-to-end. Twenty-two calls became five."
-- **A** punctuates: "Fourteen reads became three. The full chain — request to response — in one query."
-- *Talking point:* "The agent walked the whole chain — entry point, services, handlers, persistence — without us having to spell out the path."
-
-**Step 3 — Test 3: "what depends on this data model"**
-- **A:** "Test three. What depends on this data model. Fifteen calls became three."
-- **B:** "Ten reads became zero. Eleven dependencies surfaced, ranked by risk."
-- *Talking point:* "Zero file reads. The graph already knew. Pre-computed, remember."
-
-**Step 4 — Aggregate tool calls 55 → 15**
-- **B:** "Aggregate. Fifty-five tool calls collapsed to fifteen."
-- **A** (after the stamp lands): "**Seventy-three percent fewer.**"
-
-**Step 5 — Aggregate grep 18 → 0**
-- **A:** "Eighteen grep operations — gone."
-- **B:** "One hundred percent."
-
-**Step 6 — Aggregate reads 35 → 7**
-- **B:** "Thirty-five file reads down to seven."
-- **A:** "Eighty percent fewer."
-
-**Step 7 — The hero token reveal**
-- **A** (*slowly*): "And the headline — tokens per session."
-- **A:** "Sixty thousand."
-- *(brief pause — let the "before" number sit; this is the same number from ch 3)*
-- **B:** "Down to **eighteen thousand**."
-- **A:** "Seventy percent saved. Per session."
+**Step 2 — The hero: ≈ 2 hr → ≈ 30 min (75% faster, 70% lighter on the bill)**
+- "Two hours of agent flailing — became thirty minutes of grounded answers."
+- *(pause — let it sit)*
+- "Seventy-five percent of your time back. Seventy percent off the bill, as a side benefit."
+- Lead with the time. The dollar number is the *and*, not the *because*.
 
 ### Live examples to share
 
-- "These aren't synthetic tests. We pulled them from session logs in our own codebase last week."
-- "Test 1 is the cleanest single data point — a real session where the agent did the thing. Tests 2 and 3 are representative of what we see in similar queries."
-- "Sixty thousand to eighteen thousand is per session. Multiply by sessions per day per engineer — that's the real budget number."
+- "Test One — finding callers — is from an actual session log. The others are shaped from similar queries we've observed. Honest framing."
+- "Two hours to thirty minutes per session is the part that compounds — multiply across sessions per day per engineer."
 
 ### Anticipated Q&A
 
-- *"Does this scale to bigger codebases?"* — Yes, with longer initial index time. The per-query savings scale with codebase size — bigger repos have more file-read pain to eliminate.
+- *"Does this scale to bigger codebases?"* — Yes, with longer initial index time. The per-query savings scale *up* with codebase size — bigger repos have more file-read pain to eliminate.
 - *"What if my codebase changes constantly?"* — Incremental re-index. Wire up a post-checkout git hook so the graph stays fresh.
-- *"Is the 70% saving consistent or cherry-picked?"* — Honest: it's an average across the kind of structural queries we've measured. Pure greenfield code-writing won't see this saving. Refactoring, debugging, exploration — yes.
-- *"What about Test 2 and 3 — are those exact session logs too?"* — Be honest: Test 1 is a logged session, Tests 2 and 3 are representative numbers from similar queries in our codebase. Audiences respect "shaped from real data" over "pretended to be a benchmark."
+- *"Is the 75% time saving consistent or cherry-picked?"* — Average across structural queries we've measured. Greenfield code-writing won't see this saving. Refactoring, debugging, exploration — yes.
+- *"How did you get '2 hours' vs '30 minutes'?"* — Wall-clock observation, not stopwatched. Sessions with this much retrieval take roughly this long in our work.
 
 ### Handoff line
 
-Either speaker, into ch 11: **"So what does that mean for you?"**
+Either speaker, into Ch12: **"So — what changes for us, now that we know?"**
 
 ---
 
-# Chapter 11 — Closing *(tag-team)*
+# Chapter 12 — Closing
 
-**Speakers:** Both. Alternating slogans. Joint outro.
-**Tone:** Wrap. Let the strikethrough do the work. Don't add anything new.
-**Budget:** ~20s
+**Tone:** Wrap. The adoption-honesty beat (step 2) is the *most honest moment of the talk* — slow down for it. **B leads the slogan call-and-response and the adoption-honesty add-on** (this is the chapter where the human framing has the most weight). A handles the strikethrough animation timing + final outro click.
+**Budget:** ~25s · **4 steps** *(was 3 — promoted the adoption-honesty card from optional drop to a required on-screen beat)*
 
 ### Step notes
 
 **Step 0 — "Index once. Reuse forever."**
-- **A** reads it.
-- Echo of the chapter 5 hinge ("pre-computable asset"). Closes the loop.
+- Read it straight.
+- Echo of the Ch5 hinge ("pre-computable asset"). Closes the loop.
 
 **Step 1 — "Pay tokens for thinking. / Stop paying them for finding."**
-- **B:** "Pay tokens for thinking."
-- **A:** "Stop paying them for finding."
+- B leads the call-and-response: *"Pay tokens for thinking."* (pause) *"Stop paying them for finding."*
 - *(strikethrough animates on "finding")*
 
-**Step 2 — "Watch the meter drop."**
-- **Both, in unison if you can pull it off.** Otherwise B leads, A echoes faintly.
+**Step 2 — "We have the graph. / We just don't ask it yet."** *(new — adoption honesty, now on-screen)*
+- The slide does the work — *don't* paraphrase. Let it land.
+- B leans in (this is the human-framing moment): "One real-talk before we wrap. Getting these tools installed is the easy half. Reaching for them every code question — that's the harder half."
+- Then read the slide aloud: "We have the graph. We just don't ask it yet."
+- This is the most honest moment of the talk. Audiences trust speakers who say the awkward thing instead of papering over it. Practice this line so it lands without sounding rehearsed.
+- Optional anecdote (B): name *one* anti-pattern from your own week ("I caught myself grep'ing for `processOrder` yesterday before remembering gitnexus could just tell me. Habits take weeks.")
+
+**Step 3 — "Watch the meter drop."**
+- Whoever is closer to the mic. In unison if you can pull it off cleanly; otherwise single-speaker.
 - Hold the closing frame. Let the dashed rules complete.
-
-### Optional adoption real-talk (drop in if the room is engaged)
-
-Before clicking into Q&A, either speaker can drop the adoption caveat aloud — it lands hard and earns trust:
-
-> "One real-talk before questions: getting these tools *installed* is the easy half. *Getting yourself to actually reach for them every code question* — that's the harder half. We're still working on that. The graphs ship in minutes. The habit takes weeks."
-
-This is the most honest thing the talk can say. Most "tool" talks pretend the tool is the win. The win is the *practice*.
 
 ### Handoff line
 
-Either speaker, into ch 12: **"Anything you want to dig into?"** → click → "Questions?" slide
+Either speaker, into Ch13: **"Anything you want to dig into?"** → click → "Questions?" slide
 
 ---
 
-# Chapter 12 — Q&A · Thanks
+# Chapter 13 — Q&A + Developer Guide
 
-**Speakers:** Either / both. Lead speaker drives the click cadence.
-**Tone:** Open, generous. The talk is over; the audience is allowed to take it elsewhere.
+**Tone:** Open, generous. The talk is over; the audience is allowed to take it elsewhere. Either presenter drives the click cadence — whoever is closer to the laptop. Both take questions: A on tooling / mechanics, B on workflow / team-adoption.
 **Budget:** Step 0 holds during Q&A. Step 1 is the final frame.
 
 ### Step notes
@@ -540,12 +535,15 @@ Either speaker, into ch 12: **"Anything you want to dig into?"** → click → "
 - The slide does the work — big "Questions?" with a blinking cyan caret.
 - *Don't* fill silence. Wait 5+ seconds before prompting. Audiences need time to formulate.
 - If no questions come: prompt with one of the cross-chapter Q&A items below.
-- If multiple speakers, take turns answering — Speaker A on workflow / problem questions, Speaker B on tooling / integration questions.
+- Take turns: A on tooling / mechanics / how-it-works, B on workflow / team-adoption / "how do I actually use this." Whoever has direct experience with the question answers — don't force the lane.
 
-**Step 1 — "Thanks."**
-- Click here when you're wrapping. Final hero slide.
-- Don't add a verbal "thank you for coming" — the slide says it. Just smile.
-- Hold the frame until you walk off / cut the recording.
+**Step 1 — "Developer Guide" (Notion QR + URL)** *(not "Thanks." — final slide is now a follow-up resource)*
+- Click here when you're done with Q&A or want the QR visible while questions continue.
+- **What to say** when you click in: *"While we take questions — this QR opens our internal Developer Guide on Notion. Setup, schema, recipes, the things we couldn't fit in 8 minutes. Scan it now, read it later."*
+- Don't read the URL aloud — say "scan or click later." Audience can photograph it from any seat.
+- The slide replaces the previous "Thanks." outro on purpose. It's an *invitation to go further*, not a sign-off. People remember resources they were handed in the room more than people they were thanked by.
+- If your team has a dedicated Slack / Discord channel for the tools, mention it here as well: "And `#ai-finds` is where we share what worked — drop in if you try something."
+- Hold the frame until you walk off / cut the recording. Don't return to "Questions?" — the QR is the more useful final image.
 
 ### Live examples to share *(if Q&A goes quiet)*
 
@@ -615,14 +613,18 @@ If asked who this is for:
 
 # Pre-talk checklist
 
-- [ ] Both speakers have read this doc end-to-end
-- [ ] Hinge transition (ch 5 → ch 6) rehearsed — that pause is load-bearing
-- [ ] Ch 6 step 6: rehearsed how to drop the "zero greps" story — a real session where the agent found a function registered via decorator without grep'ing first (7 tool calls total, 0 greps, 4 reads)
-- [ ] Ch 7: agreed on how to answer the "have you actually run Graphify on your docs?" question honestly
-- [ ] Ch 10 alternation rehearsed — practice who reads which line
-- [ ] Ch 10: agreed on how to answer "are Tests 2 & 3 logged sessions too?" — Test 1 is real session, 2-3 are representative
-- [ ] Ch 11 unison line rehearsed (or single-speaker fallback agreed)
-- [ ] Ch 11: agreed on whether to drop the adoption real-talk before Q&A
+**Lane convention reminder:** A drives technical / steps / numbers. B drops live examples + analogies + the human-framing beats (Ch5 hinge, Ch8 SQL analogy, Ch10 anecdotes, Ch12 adoption honesty).
+
+- [ ] Both presenters have read this doc end-to-end and agree on the lane split (A = technical, B = examples)
+- [ ] Hinge transition (Ch5 → Ch6) rehearsed — that pause is load-bearing
+- [ ] Ch6 step 6: rehearsed how to drop the "zero greps" story — a real session where the agent found a function registered via decorator without grep'ing first (7 tool calls total, 0 greps, 4 reads). **B owns this anecdote.**
+- [ ] Ch7 step 7: agreed which presenter mentions the two new "for code you've just opened" / "for code you've inherited" asides
+- [ ] Ch10 (day-changes): **B has picked one personal anecdote per scenario** (onboarding / refactor / debugging) and rehearsed each as a single-line drop after A reads the tool → answer line
+- [ ] Ch11 receipts: A has rehearsed reading the aggregate row + hero in one breath (no alternation needed — only 3 steps)
+- [ ] Ch11: agreed on how to answer "are Test 2 & 3 logged sessions too?" — Test 1 is real session, 2-3 are representative
+- [ ] Ch12 step 2 (NEW adoption-honesty beat): **B has rehearsed the spoken add-on** ("getting these tools installed is the easy half...") so it lands without sounding rehearsed. The slide text itself is read straight.
+- [ ] Ch12 step 3 ("Watch the meter drop.") — agreed on unison vs single-speaker delivery
+- [ ] Ch13 final slide: agreed who delivers the verbal lead-in for the Developer Guide QR ("scan it now, read it later")
 - [ ] Cover slide showing in browser before audience arrives
 - [ ] Backup plan if the dev server / browser fails mid-talk (have a screen recording ready as fallback)
-- [ ] Q&A answers reviewed once — especially "are you actually using these every day?" (the most likely question)
+- [ ] Q&A answers reviewed once — especially "are you actually using these every day?" (the most likely question — **B's question**)

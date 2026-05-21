@@ -4,16 +4,17 @@ import "./Intro.css";
 const DRIP_VALUES = ["+12", "+47", "+89", "+213", "+417", "+1.2k", "+...", "+..."];
 
 export default function Intro({ step }: ChapterStepProps) {
-  /* Step 0 — opening question */
+  /* Step 0 — opening: name the room */
   if (step === 0) {
     return (
       <div className="in-scene scene-pad">
         <div className="in-step0">
           <h1 className="in-h0">
-            Using <span className="in-em">Claude Code</span>
+            <span className="in-em">Claude Code</span>
             <br />
-            for serious work
-            <span className="in-q-mark">?</span>
+            is on every laptop
+            <br />
+            in this room.
             <span className="in-caret" aria-hidden>_</span>
           </h1>
         </div>

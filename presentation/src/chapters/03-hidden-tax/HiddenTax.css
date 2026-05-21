@@ -167,6 +167,12 @@
   font-variant-numeric: tabular-nums;
   line-height: 0.88;
 }
+/* time-framing variant for the cost reveal (smaller to fit "≈ 2 hours" on one line) */
+.ht-step2 .ht-token-num {
+  font-size: 240px;
+  white-space: nowrap;
+  letter-spacing: -0.025em;
+}
 .ht-token-unit {
   font-family: var(--font-mono);
   font-size: 24px;

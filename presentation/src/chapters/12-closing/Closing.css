@@ -85,7 +85,43 @@
   animation: cl-strike 600ms cubic-bezier(0.86, 0, 0.07, 1) 1700ms forwards;
 }
 
-/* ─── step 2 — closing frame ─── */
+/* ─── step 2 — adoption honesty (we have the graph / we just don't ask it yet) ─── */
+.cl-step-honest {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+}
+.cl-h-honest {
+  font-family: var(--font-display-cn);
+  font-weight: 700;
+  font-size: 168px;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+.cl-h-honest-2 { text-align: right; }
+.cl-mute { color: var(--text-mute); }
+.cl-rule-honest {
+  display: block;
+  width: 50%;
+  height: 2px;
+  margin: 0 auto;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--accent) 0,
+      var(--accent) 14px,
+      transparent 14px,
+      transparent 28px
+    );
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: cl-rule-grow-center 900ms cubic-bezier(0.86, 0, 0.07, 1) 700ms forwards;
+}
+
+/* ─── step 3 — closing frame ─── */
 .cl-step2 {
   flex: 1;
   display: flex;

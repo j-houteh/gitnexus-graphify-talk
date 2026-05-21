@@ -1,8 +1,16 @@
 # Video Outline
 
+> **⚠️ Status (2026-05-21):** This outline is the *original* Phase-2 dev plan. The deck has since evolved beyond it in response to a goal shift from "save tokens" to "use the tools well day-to-day." For the **current** chapter list and step counts, see [README.md](README.md). For **what speakers actually say**, see [speaker-notes.md](speaker-notes.md) (authoritative for the live talk).
+>
+> Material changes since this outline was written:
+> - Ch3 hidden-tax: 5 → 3 steps; time-framing now leads ("≈ 2 hours of agent flailing") with tokens as supporting breadcrumb.
+> - **NEW Ch10 day-changes** inserted between Setup and Receipts: three day-in-the-life scenarios (onboarding · refactor · debugging).
+> - Ch11 receipts (was Ch10): 8 → 3 steps; hero now leads with time (≈ 2 hr → ≈ 30 min) rather than tokens.
+> - Ch12 closing (was Ch11): 3 → 4 steps; adoption-honesty card ("We have the graph. We just don't ask it yet.") promoted from optional speaker note to on-screen beat.
+> - Ch13 qa-thanks (was Ch12): step 1 is now a Developer Guide QR (Notion follow-up), not "Thanks."
+
 > **Theme**: `blueprint` — deep-navy + cyan, IBM Plex Mono. Engineering blueprint / schematic vibe.
-> **Total length**: ~8.5 min (English narration ~1100 words ÷ ~130 wpm; or readable on-screen captions at equivalent pacing).
-> **Chapters**: 12 chapters / 51 steps total.
+> **Total length** *(current, post-evolution)*: ~6–7 min · 13 chapters / 48 steps total.
 > **Project context**: numbers are from our own codebase (~1,600 files). Indexed with GitNexus; Graphify installed but only used qualitatively.
 > **Audio mode**: Script-only, voice in post. Phase 3 (audio synthesis) is **skipped**. `narrations.ts` still drives step count and on-screen text per the skill contract.
 > **Assets**: Animated diagrams only — no raster screenshots. All visuals are CSS / SVG / Canvas built from primitives.
@@ -12,18 +20,18 @@
 ## 1. cover — Cover (1 step · holds before the talk)
 
 **Info pool**:
-- Title (verbatim): "Token Diet" — from the announcement
-- Subtitle (verbatim): "Stop Burning Cash on AI Dev Tools" — from the announcement
-- Tagline (verbatim): "real tricks · real savings · no filler" — from the announcement
+- Title (verbatim): "Day Diet" — wordplay evolution of the originally-announced "Token Diet" (the announcement word "Diet" is preserved; "Token" is swapped to "Day" to signal the new framing without abandoning the audience's expectation)
+- Subtitle: **none** — title carries the cover alone. Decision: every cover word should earn its place; subtitle felt explanatory rather than punchy
+- Tagline (verbatim): "day-one ready · lookup not grep · no theory" — each phrase echoes a beat in the talk (day-one question from Ch6, lookup-not-grep from Ch6 step 6, no-theory matches Ch10 day-changes)
 - Decision: evergreen — no session date, no speaker names, so the slide can be reused — chapter framing
 - Visual rule: minimal motion. One-time fade-up on entry, then static — the cover holds during pre-talk hubbub and visible motion would distract.
 
 **Development plan**:
 
-- step 1 (hold) — Hero "Token Diet" + subtitle "Stop Burning Cash on AI Dev Tools" + dashed cyan rule + accent tagline "real tricks · real savings · no filler". One-time fade-up on entry; static thereafter.
+- step 1 (hold) — Hero "Day Diet" + dashed cyan rule + accent tagline "day-one ready · lookup not grep · no theory". One-time fade-up on entry; static thereafter.
 
 Script excerpt:
-> "Token Diet. Stop burning cash on AI dev tools."
+> "Day Diet."
 
 ---
 

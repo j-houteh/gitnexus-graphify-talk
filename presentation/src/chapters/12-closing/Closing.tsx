@@ -42,7 +42,28 @@ export default function Closing({ step }: ChapterStepProps) {
     );
   }
 
-  /* Step 2 — closing frame */
+  /* Step 2 — adoption honesty: we have the graph, we just don't ask it yet */
+  if (step === 2) {
+    return (
+      <div className="cl-scene scene-pad">
+        <div className="cl-step-honest">
+          <h2 className="cl-h-honest cl-h-honest-1">
+            <span className="cl-clause cl-clause-1 cl-mute">
+              We have the graph.
+            </span>
+          </h2>
+          <span className="cl-rule-honest" />
+          <h2 className="cl-h-honest cl-h-honest-2">
+            <span className="cl-clause cl-clause-2">
+              We just <span className="cl-em">don't ask it</span> yet.
+            </span>
+          </h2>
+        </div>
+      </div>
+    );
+  }
+
+  /* Step 3 — closing frame */
   return (
     <div className="cl-scene scene-pad">
       <div className="cl-step2">
