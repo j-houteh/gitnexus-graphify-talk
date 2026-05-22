@@ -119,31 +119,14 @@ body {
 .app-shell {
   position: fixed;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--shell);
-}
-.stage-fitter {
-  position: relative;
-  /* width / height are set inline by Stage.tsx (1920*scale × 1080*scale) */
-  isolation: isolate;
+  background: var(--surface);
 }
 .stage-frame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1920px;
-  height: 1080px;
-  transform-origin: top left;
+  position: fixed;
+  inset: 0;
   background: var(--surface);
   overflow: hidden;
   cursor: pointer;
-  box-shadow: var(--shadow-stage);
-  border: var(--stage-border, none);
-  /* radius on the LIVE stage gives editorial / keynote softness;
-     theme can disable with --r-stage: 0 */
-  border-radius: var(--r-stage, 0);
 }
 
 /* OPTIONAL pattern layer drawn ON the stage so screen recordings catch it */
