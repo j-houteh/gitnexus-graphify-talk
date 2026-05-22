@@ -15,8 +15,8 @@ import Graphify from "../chapters/07-graphify/Graphify";
 import { narrations as graphifyNarrations } from "../chapters/07-graphify/narrations";
 import DualEngine from "../chapters/08-dual-engine/DualEngine";
 import { narrations as dualEngineNarrations } from "../chapters/08-dual-engine/narrations";
-import Setup from "../chapters/09-setup/Setup";
-import { narrations as setupNarrations } from "../chapters/09-setup/narrations";
+// import Setup from "../chapters/09-setup/Setup";
+// import { narrations as setupNarrations } from "../chapters/09-setup/narrations";
 import DayChanges from "../chapters/10-day-changes/DayChanges";
 import { narrations as dayChangesNarrations } from "../chapters/10-day-changes/narrations";
 import Receipts from "../chapters/11-receipts/Receipts";
@@ -46,7 +46,7 @@ export const CHAPTERS: ChapterDef[] = [
   { id: "gitnexus",       title: "GitNexus",              narrations: gitNexusNarrations,     Component: GitNexus },
   { id: "graphify",       title: "Graphify",              narrations: graphifyNarrations,     Component: Graphify },
   { id: "dual-engine",    title: "The Dual Engine",       narrations: dualEngineNarrations,   Component: DualEngine },
-  { id: "setup",          title: "Setup",                 narrations: setupNarrations,        Component: Setup },
+  // { id: "setup",          title: "Setup",                 narrations: setupNarrations,        Component: Setup },
   { id: "day-changes",    title: "How the Day Changes",   narrations: dayChangesNarrations,   Component: DayChanges },
   { id: "receipts",       title: "The Receipts",          narrations: receiptsNarrations,     Component: Receipts },
   { id: "closing",        title: "Closing",               narrations: closingNarrations,      Component: Closing },
